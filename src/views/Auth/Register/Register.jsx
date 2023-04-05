@@ -2,7 +2,9 @@
 import { useFormik } from 'formik';
 import FormControl from '../../../assets/Forms/FormControl';
 import Input from '../../../assets/Forms/Input';
+import { registerUser } from '../../../services/Auth.service';
 import { loginSchema } from '../../../utils/schemas/login.schema';
+
 
 
 const initialValues = {
@@ -24,16 +26,35 @@ const Register = () => {
           setTimeout(() => {    
             setSubmitting(false)
           }, 2000);
-    
-          // Peticion al back para que me devuelva el JWT
-        }
+         // registerService({ email: values.email, username: values.username, password: values.password }) // llama a /login del back pasandole el email y la password
+      //     const formData = new FormData();
+
+      // formData.append("email", values.email);
+      // formData.append("username", values.username);
+      // formData.append("password", values.password);
+
+      console.log('values', values)
+
+      registerUser(values)
+        .then((response) => {
+          console.log(response);
+        })
+        .catch(err => {
+          if (err?.response?.data?.message) {
+            setFieldError('email', err?.response?.data?.message)
+          } else {
+            setFieldError('email', err.message)
+          }
+          setSubmitting(false)
+        })}
       });
+
 
     return (
         <div>
             <h1>Register</h1>
 
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit} encType="multipart/form-data">
         <FormControl text="Username" error={touched.username && errors.username} htmlFor="username">
           <Input
             id="username"
