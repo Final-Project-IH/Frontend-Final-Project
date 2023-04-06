@@ -18,7 +18,6 @@ function App() {
       <div className="container my-3">
         <Routes>
           <Route path="/" element={<Home />} />
-          {/* <Route path="/login" element={<Login />} /> */}
           <Route path="products" element={<AllProducts />} />
           <Route path="products/:id" element={<ProductDetail />} />
           <Route path="login" element={<Login />} />

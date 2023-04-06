@@ -1,5 +1,6 @@
 import React from "react";
 import ProductCard from "./ProductCard";
+import CountdownTimer from "../CountDownTimer/CountDownTimer";
 
 const ProductList = ({ products }) => {
   return (
@@ -7,6 +8,7 @@ const ProductList = ({ products }) => {
       {products.map((product) => (
         <div key={product._id} className="col mb-3">
           <ProductCard {...product} />
+          <CountdownTimer endDate={product.end}/>
         </div>
       ))}
     </div>

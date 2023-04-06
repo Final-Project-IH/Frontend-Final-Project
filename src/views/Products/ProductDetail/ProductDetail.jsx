@@ -9,26 +9,30 @@ const ProductDetail = () => {
   const [product, setProduct] = useState(null);
   const { id } = useParams();
 
-  const fetchProductDetail = useCallback(()=>{
+  const fetchProductDetail = useCallback(() => {
     productDetail(id)
-            .then((product) => setProduct(product))
-            .catch((err) => console.log(err));
-  }, [])
+      .then((product) => setProduct(product))
+      .catch((err) => console.log(err));
+  }, []);
 
-  useInterval(fetchProductDetail, 5000) //llama a la Api cada 5 segundos para ver si hay cambios en la puja
+  useInterval(fetchProductDetail, 100000); //CAMBIAR A 5000(5SEC)llama a la Api cada 5 segundos para ver si hay cambios en la puja
 
   useEffect(() => {
-    fetchProductDetail()
-  }, [])
+    fetchProductDetail();
+  }, []);
 
   if (!product) {
     return <p> ... fetching product</p>;
   }
 
   return (
-    <div>
-      <ProductDetailed product={product} />
-      <Bidslist bids={product.bids} />
+    <div className="d-flex justify-content-between">
+      <div className="card">
+        <ProductDetailed product={product} />
+      </div>
+      <div className="card">
+        <Bidslist bids={product.bids} product={product} />
+      </div>
     </div>
   );
 };

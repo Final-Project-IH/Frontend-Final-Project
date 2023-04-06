@@ -1,5 +1,6 @@
 import React from "react";
 
+
 const ProductDetailed = ({ product }) => {
   return (
     <div>
@@ -7,7 +8,8 @@ const ProductDetailed = ({ product }) => {
       <h5>{product.product.shortDescription}</h5>
       <p>{product.product.description}</p>
       <p>{product.product.state}</p>
-      <h1>{product.initialPrice}</h1>
+      <h1>Actual Price: {product.initialPrice}</h1>
+     
     </div>
   );
 };
