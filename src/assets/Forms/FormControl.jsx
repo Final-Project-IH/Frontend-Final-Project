@@ -1,3 +1,5 @@
+import React from "react";
+
 const FormControl = ({ children, text, htmlFor, error }) => {
     return (
       <div className="FormControl mb-3">
