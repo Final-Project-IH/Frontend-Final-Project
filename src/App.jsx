@@ -5,6 +5,7 @@ import Navbar from './components/Navbar/Navbar'
 // import Login from './views/Auth/Login/Login'
 import Home from './views/Home/Home'
 import AllProducts from './views/Products/AllProducts/AllProducts'
+import ProductDetail from './views/Products/ProductDetail/ProductDetail'
 
 function App() {
 
@@ -17,6 +18,7 @@ function App() {
           <Route path="/" element={<Home />} />
           {/* <Route path="/login" element={<Login />} /> */}
           <Route path="products" element={<AllProducts />} />
+          <Route path="products/:id" element={<ProductDetail />} />
         </Routes>
       </div>
     </div>

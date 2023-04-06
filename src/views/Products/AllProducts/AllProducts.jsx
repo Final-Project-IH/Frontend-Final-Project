@@ -7,18 +7,19 @@ const AllProducts = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    listProduct().then((products) => {
-      setLoading(false);
-      setProducts(products);
-    })
-    .catch((err) => console.log(err));
+    listProduct()
+      .then((products) => {
+        setLoading(false);
+        setProducts(products);
+      })
+      .catch((err) => console.log(err));
   }, []);
 
   const renderProducts = () => {
     if (loading) {
       return <p>Loading...</p>;
     }
-    return <ProductList products={products}/>;
+    return <ProductList products={products} />;
   };
   return <div>{renderProducts()}</div>;
 };
