@@ -7,6 +7,7 @@ import Register from './views/Auth/Register/Register'
 import Home from './views/Home/Home'
 import AllProducts from './views/Products/AllProducts/AllProducts'
 import ProductDetail from './views/Products/ProductDetail/ProductDetail'
+import CategoryList from "./components/Categories/CategoryList"
 
 
 function App() {
@@ -18,10 +19,12 @@ function App() {
       <div className="container my-3">
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="products" element={<AllProducts />} />
-          <Route path="products/:id" element={<ProductDetail />} />
           <Route path="login" element={<Login />} />
           <Route path="register" element={<Register />} />
+          <Route path="products" element={<AllProducts />} />
+          <Route path="products/:id" element={<ProductDetail />} />
+          {/* <Route path="products/category/:id" element={<CategoryDetail />} /> */}
+          <Route path="products/category" element={<CategoryList />} />
         </Routes>
       </div>
     </div>

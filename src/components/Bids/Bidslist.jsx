@@ -1,4 +1,6 @@
 import React from "react";
+import CountdownTimer from "../CountDownTimer/CountDownTimer";
+import BidForm from "./BidForm";
 
 const Bidslist = ({ bids, product }) => {
   const sortedBids = bids.sort((a, b) => b.offer - a.offer);
@@ -6,6 +8,8 @@ const Bidslist = ({ bids, product }) => {
   return (
     <div>
     <h2>Actual Price: {product.initialPrice}</h2>
+    <CountdownTimer endDate={product.end} />
+    <BidForm lastOffer={product.initialPrice} />
       {lastBids.map((lastBids) => {
         return (
           <div key={lastBids._id}>

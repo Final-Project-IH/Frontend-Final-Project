@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { listProduct } from "../../../services/ProductService";
 import ProductList from "../../../components/Products/ProductList";
+import CategoryList from "../../../components/Categories/CategoryList";
 
 const AllProducts = () => {
   const [products, setProducts] = useState(null);
@@ -21,7 +22,7 @@ const AllProducts = () => {
     }
     return <ProductList products={products} />;
   };
-  return <div>{renderProducts()}</div>;
+  return <div><CategoryList /> {renderProducts()}</div>;
 };
 
 export default AllProducts;
