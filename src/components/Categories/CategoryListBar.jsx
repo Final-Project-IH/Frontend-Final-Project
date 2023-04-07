@@ -15,18 +15,17 @@ const CategoryList = () => {
       .catch((err) => console.log(err));
   }, []);
 
-  console.log("categorias", category)
-
-
-  return <div>
-    <div className="row">
-      {category.map((category) => (
-        <div key={category._id} className="col mb-3">
-          <CategoryCard {...category} />
-        </div>
-      ))}
+  return (
+    <div>
+      <div className="row">
+        {category.map((category) => (
+          <div key={category._id} className="col mb-3">
+            <CategoryCard {...category} />
+          </div>
+        ))}
+      </div>
     </div>
-  </div>;
+  );
 };
 
 export default CategoryList;

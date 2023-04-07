@@ -54,7 +54,7 @@ const Register = () => {
         <div>
             <h1>Register</h1>
 
-            <form onSubmit={handleSubmit} encType="multipart/form-data">
+            <form onSubmit={handleSubmit}>
         <FormControl text="Username" error={touched.username && errors.username} htmlFor="username">
           <Input
             id="username"
