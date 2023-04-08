@@ -1,17 +1,19 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router";
-import { categoryDetail } from "../../../services/CategoriesService";
+import { categoryFashion } from "../../../services/CategoriesService";
 import ProductList from "../../../components/Products/ProductList";
-// import ClothesList from "../../../components/Categories/Fashion/ClothesList";
-// import AccesoriesList from "../../../components/Categories/Fashion/AccesoriesList";
+import ClothesList from "../../../components/Categories/Fashion/ClothesList";
+import AccesoriesList from "../../../components/Categories/Fashion/AccesoriesList";
+import ShoesList from "../../../components/Categories/Fashion/ShoesList";
 
-const ProductsByCategory = () => {
+
+const ProductsFashion = () => {
   const [product, setProduct] = useState(null);
   const [loading, setLoading] = useState(true);
   const { id } = useParams();
 
   useEffect(() => {
-    categoryDetail(id)
+    categoryFashion(id)
       .then((products) => {
         setLoading(false);
         setProduct(products);
@@ -22,8 +24,12 @@ const ProductsByCategory = () => {
   return (
     <div>
       {!product ? <p> ... fetching product</p> :<ProductList products={product} />}
+      <ClothesList />
+      <AccesoriesList />
+      <ShoesList />
+      
     </div>
   );
 };
 
-export default ProductsByCategory;
+export default ProductsFashion;

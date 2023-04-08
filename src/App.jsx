@@ -8,7 +8,10 @@ import Home from './views/Home/Home'
 import AllProducts from './views/Products/AllProducts/AllProducts'
 import ProductDetail from './views/Products/ProductDetail/ProductDetail'
 import CategoryList from "./components/Categories/CategoryListBar"
-import ProductsByCategory from "./views/Products/ProductsByCategory/ProductsByCategory"
+import ProductsFashion from "./views/Products/ProductsByCategory/ProductsFashion"
+import ProductsHome from "./views/Products/ProductsByCategory/productsHome"
+import ProductsArt from "./views/Products/ProductsByCategory/ProductsArt"
+import ProductsAntiques from "./views/Products/ProductsByCategory/ProductsAntiques"
 
 
 function App() {
@@ -24,7 +27,10 @@ function App() {
           <Route path="register" element={<Register />} />
           <Route path="products" element={<AllProducts />} />
           <Route path="products/:id" element={<ProductDetail />} />
-          <Route path="products/category/:id" element={<ProductsByCategory />} />
+          <Route path="products/category/:id/fashion" element={<ProductsFashion />} />
+          <Route path="products/category/:id/home" element={<ProductsHome />} />
+          <Route path="products/category/:id/art" element={<ProductsArt />} />
+          <Route path="products/category/:id/antiques" element={<ProductsAntiques />} />
           <Route path="products/category" element={<CategoryList />} />
         </Routes>
       </div>

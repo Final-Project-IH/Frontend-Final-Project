@@ -1,15 +1,19 @@
 import React, { useEffect, useState } from "react";
-import { categoryDetailAccesories } from "../../../services/CategoriesService";
-import ProductList from "../../Products/ProductList";
 import { useParams } from "react-router";
+import { categoryHome } from "../../../services/CategoriesService";
+import ProductList from "../../../components/Products/ProductList";
+import DecorationList from "../../../components/Categories/Home/DecorationList";
+import FurnitureList from "../../../components/Categories/Home/FurnitureList";
+import KitchenwareList from "../../../components/Categories/Home/KitchenwareList";
 
-const AccesoriesList = () => {
+
+const ProductsHome = () => {
   const [product, setProduct] = useState(null);
   const [loading, setLoading] = useState(true);
   const { id } = useParams();
 
   useEffect(() => {
-    categoryDetailAccesories(id)
+    categoryHome(id)
       .then((products) => {
         setLoading(false);
         setProduct(products);
@@ -19,14 +23,17 @@ const AccesoriesList = () => {
 
   return (
     <div>
-      <h1>Accesories</h1>
       {!product ? (
         <p> ... fetching product</p>
       ) : (
         <ProductList products={product} />
       )}
+      <DecorationList />
+      <FurnitureList />
+      <KitchenwareList />
+
     </div>
   );
 };
 
-export default AccesoriesList;
+export default ProductsHome;
