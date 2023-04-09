@@ -19,7 +19,10 @@ const MusicList = () => {
   
     return (
       <div>
+         <div className="d-flex justify-content-between">
         <h1>Music</h1>
+        <p>See All</p>
+      </div>
         {!product ? (
           <p> ... fetching product</p>
         ) : (

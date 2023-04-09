@@ -19,7 +19,10 @@ const FramesList = () => {
   
     return (
       <div>
+         <div className="d-flex justify-content-between">
         <h1>Frames</h1>
+        <p>See All</p>
+      </div>
         {!product ? (
           <p> ... fetching product</p>
         ) : (

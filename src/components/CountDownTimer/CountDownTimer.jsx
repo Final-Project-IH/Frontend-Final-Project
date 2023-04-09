@@ -33,7 +33,8 @@ function CountdownTimer({endDate}) {
     </div>
   );
 
-  //PREGUNTAR COMO SE HARÍA PARA QUE NO SE PRINTE JUSTO ESE SEGUNDO EN CLOSED. ESTÁ BIEN ASÍ?? }, 1);
+  //PREGUNTAR COMO SE HARÍA PARA QUE NO SE PRINTE JUSTO ESE SEGUNDO EN CLOSED. 
+  //ESTÁ BIEN ASÍ?? }, 1);
 
 }
 
