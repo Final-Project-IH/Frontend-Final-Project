@@ -2,8 +2,9 @@
 import { useFormik } from 'formik';
 import FormControl from '../../../assets/Forms/FormControl';
 import Input from '../../../assets/Forms/Input';
-import { registerUser } from '../../../services/Auth.service';
-import { loginSchema } from '../../../utils/schemas/login.schema';
+import { register } from '../../../services/Auth.service';
+import { registerSchema } from '../../../utils/schemas/register.schema';
+import { useNavigate } from "react-router-dom";
 
 
 
@@ -14,30 +15,23 @@ const initialValues = {
   }
 
 const Register = () => {
+  const navigate =  useNavigate()
 
     const {
-        values, errors, touched, handleChange, handleBlur, isSubmitting, handleSubmit, setSubmitting
+        values, errors, touched, handleChange, handleBlur, isSubmitting, handleSubmit, setSubmitting, setFieldError
       } = useFormik({
         initialValues: initialValues,
         validateOnBlur: true,
         validateOnChange: false,
-        validationSchema: loginSchema,
+        validationSchema: registerSchema,
         onSubmit: (values) => {
-          setTimeout(() => {    
+          /* setTimeout(() => {    
             setSubmitting(false)
-          }, 2000);
-         // registerService({ email: values.email, username: values.username, password: values.password }) // llama a /login del back pasandole el email y la password
-      //     const formData = new FormData();
+          }, 2000); */
 
-      // formData.append("email", values.email);
-      // formData.append("username", values.username);
-      // formData.append("password", values.password);
-
-      console.log('values', values)
-
-      registerUser(values)
-        .then((response) => {
-          console.log(response);
+      register( { email: values.email, username: values.username, password: values.password} )
+        .then(() => {
+          navigate('/login')
         })
         .catch(err => {
           if (err?.response?.data?.message) {

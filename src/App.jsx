@@ -14,6 +14,9 @@ import ProductsArt from "./views/Products/ProductsByCategory/ProductsArt"
 import ProductsAntiques from "./views/Products/ProductsByCategory/ProductsAntiques"
 import ClothesAll from "./views/Products/ProductsBySubcategory/Fashion/Clothes/ClothesAll"
 import ClothesInitialPage from "./views/Products/ProductsBySubcategory/Fashion/Clothes/ClothesInitialPage"
+import CreateProduct from "./views/Products/CreateProduct/CreateProduct"
+//import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
+//import AuthContext from "./contexts/AuthContext";
 
 
 function App() {
@@ -36,6 +39,7 @@ function App() {
           <Route path="products/category/:id/art" element={<ProductsArt />} />
           <Route path="products/category/:id/antiques" element={<ProductsAntiques />} />
           <Route path="products/category" element={<CategoryList />} />
+          <Route path="/new-product" element={<CreateProduct />} />
         </Routes>
       </div>
     </div>

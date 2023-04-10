@@ -1,8 +1,12 @@
 
 import { useFormik } from 'formik';
+import { useContext } from "react";
 import FormControl from '../../../assets/Forms/FormControl';
 import Input from '../../../assets/Forms/Input';
 import { loginSchema } from '../../../utils/schemas/login.schema';
+import { login as loginService } from "./../../../services/Auth.service";
+import AuthContext from "../../../contexts/Auth.context";
+import { setAccessToken } from "../../../stores/AccessTokenStore";
 
 
 const initialValues = {
@@ -11,9 +15,12 @@ const initialValues = {
   }
 
 const Login = () => {
-
+  const { login, currentUser } = useContext(AuthContext);
+  if (currentUser) {
+    return <Navigate to="/" />;
+  }
     const {
-        values, errors, touched, handleChange, handleBlur, isSubmitting, handleSubmit, setSubmitting
+        values, errors, touched, handleChange, handleBlur, isSubmitting, handleSubmit, setSubmitting, setFieldError
       } = useFormik({
         initialValues: initialValues,
         validateOnBlur: true,
@@ -23,8 +30,19 @@ const Login = () => {
           setTimeout(() => {    
             setSubmitting(false)
           }, 2000);
-    
-          // Peticion al back para que me devuelva el JWT
+          loginService({ username: values.username, password: values.password }) 
+        .then((response) => {
+          login(response.accessToken);
+        })
+        .catch((err) => {
+          if (err?.response?.data?.message) {
+            setFieldError("username", err?.response?.data?.message);
+          } else {
+            setFieldError("username", err.message);
+          }
+          setSubmitting(false);
+        });
+
         }
       });
 
