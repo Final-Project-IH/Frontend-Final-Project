@@ -6,5 +6,5 @@ export const login = ({ username, password }) =>
   http.post("/login", { username, password });
 
 export const register = ({ email, username, password }) => {
-  http.post("/register", { email, username, password });
+  return http.post("/register", { email, username, password });
 };

@@ -4,6 +4,7 @@ import FormControl from '../../../assets/Forms/FormControl';
 import Input from '../../../assets/Forms/Input';
 import { register } from '../../../services/Auth.service';
 import { registerSchema } from '../../../utils/schemas/register.schema';
+import { useNavigate } from "react-router-dom";
 
 
 
@@ -14,6 +15,7 @@ const initialValues = {
   }
 
 const Register = () => {
+  const navigate =  useNavigate()
 
     const {
         values, errors, touched, handleChange, handleBlur, isSubmitting, handleSubmit, setSubmitting, setFieldError
@@ -27,16 +29,16 @@ const Register = () => {
             setSubmitting(false)
           }, 2000); */
 
-      register( { email: values.email, username: values.username, password: values.password})
-        .then((response) => {
-          //navigate
+      register( { email: values.email, username: values.username, password: values.password} )
+        .then(() => {
+          navigate('/login')
         })
         .catch(err => {
-          /* if (err?.response?.data?.message) {
+          if (err?.response?.data?.message) {
             setFieldError('email', err?.response?.data?.message)
           } else {
             setFieldError('email', err.message)
-          } */
+          }
           setSubmitting(false)
         })}
       });
