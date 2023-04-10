@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import dayjs from "dayjs";
 import { Link } from "react-router-dom";
 
 const ProductCard = ({product}) => {
-
+  // const [productAPI, setProduct] = useState(product);
+  // const now = new Date();
+  // if(product.end )
   return (
     <Link
       to={`/products/${product._id}`}

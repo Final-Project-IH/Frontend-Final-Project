@@ -13,6 +13,7 @@ const ClothesAll = () => {
   const [loading, setLoading] = useState(true);
   const { id } = useParams();
 
+  console.log("clothes", clothes)
 
   useEffect(() => {
     categoryDetailClothes(id)
@@ -55,7 +56,6 @@ const ClothesAll = () => {
       <div>
     <ProductList products={clothes}/> 
         {/* <ClothesList clothes={clothes} /> */}
-        <PaginatedItems items={clothes} itemsPerPage={4} />
       </div>
     </div>
   );
