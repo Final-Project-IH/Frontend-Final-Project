@@ -2,19 +2,20 @@ import React from "react";
 import dayjs from "dayjs";
 import { Link } from "react-router-dom";
 
-const ProductCard = ({ initialPrice, product, status, start, end, _id }) => {
+const ProductCard = ({product}) => {
+
   return (
     <Link
-      to={`/products/${_id}`}
+      to={`/products/${product._id}`}
       style={{ textDecoration: "none" }}
     >
       <div>
         <div className="d-flex flex-column justify-content-center">
           <p>{product.name}</p>
-          <p>{initialPrice}</p>
-          <p>{status}</p>
-          <p>{dayjs(start).format("DD/MM/YYYY HH:mm:ss")}</p>
-          <p>{dayjs(end).format("DD/MM/YYYY HH:mm:ss")}</p>
+          <p>{product.initialPrice}</p>
+          <p>{product.status}</p>
+          <p>{dayjs(product.start).format("DD/MM/YYYY HH:mm:ss")}</p>
+          <p>{dayjs(product.end).format("DD/MM/YYYY HH:mm:ss")}</p>
         </div>
       </div>
     </Link>
@@ -22,3 +23,16 @@ const ProductCard = ({ initialPrice, product, status, start, end, _id }) => {
 };
 
 export default ProductCard;
+
+
+// if ( si ya noesta disponible) {
+//   hago una peticion para desactivar el Product
+//   cuando devuelva el prducto actualizado setProduct(de ese nuevo producto)
+//   setLoading(false)
+
+// } else {
+//   setLoading(false)
+// }
+// })
+
+// if (loading) return <p>loading....</p>

@@ -34,12 +34,12 @@ const ClothesList = ({clothes}) => {
     // </div>
 <div>
     <div className="row row-cols-1 row-cols-md-3 g-3">
-    {clothes.map((clothes) => (
-      <div key={clothes._id} className="col mb-3">
-        <ProductCard {...clothes} />
-        <CountdownTimer endDate={clothes.end}/>
-      </div>
-    ))}
+      {clothes.map((clothes) => (
+        <div key={clothes._id} className="col mb-3">
+          <ProductCard {...clothes} />
+          <CountdownTimer endDate={clothes.end}/>
+        </div>
+      ))}
     </div>   
     </div>
   );

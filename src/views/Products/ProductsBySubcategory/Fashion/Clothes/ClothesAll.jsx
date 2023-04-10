@@ -2,6 +2,9 @@ import React, { useEffect, useState } from "react";
 import { categoryDetailClothes } from "../../../../../services/CategoriesService";
 import { useParams } from "react-router";
 import ClothesList from "../../../../../components/Categories/Fashion/ClothesList";
+import PaginatedItems from "../../../../../components/Paginate/Paginate";
+import ProductList from "../../../../../components/Products/ProductList";
+
 
 const ClothesAll = () => {
   const [clothes, SetClothes] = useState([]);
@@ -9,6 +12,7 @@ const ClothesAll = () => {
   const [sortedByNewest, setSortedByNewest] = useState(false);
   const [loading, setLoading] = useState(true);
   const { id } = useParams();
+
 
   useEffect(() => {
     categoryDetailClothes(id)
@@ -43,12 +47,15 @@ const ClothesAll = () => {
 
 
 
+
   return (
     <div>
     <button onClick={handleSortByPrice}>{sortedByPrice ?  "Order by lower Price" : "Order by higher price"}</button>
     <button onClick={handleSortByNewest}>{sortedByNewest ?  "Order by Older" : "Order by Newest"}</button>
       <div>
-        <ClothesList clothes={clothes} />
+    <ProductList products={clothes}/> 
+        {/* <ClothesList clothes={clothes} /> */}
+        <PaginatedItems items={clothes} itemsPerPage={4} />
       </div>
     </div>
   );

@@ -8,7 +8,7 @@ const ProductList = ({ products }) => {
       {products.map((product) => {
         return (
         <div key={product._id} className="col mb-3">
-          <ProductCard {...product} />
+          <ProductCard product={product} />
           <CountdownTimer endDate={product.end}/>
         </div>
       );
