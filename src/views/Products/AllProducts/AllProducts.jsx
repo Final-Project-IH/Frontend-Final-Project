@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { listProduct } from "../../../services/ProductService";
 import ProductList from "../../../components/Products/ProductList";
-import CategoryList from "../../../components/Categories/CategoryList";
+import CategoryList from "../../../components/Categories/CategoryListBar";
 
 const AllProducts = () => {
   const [products, setProducts] = useState(null);
