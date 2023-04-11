@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from 'react';
 
 
-function CountdownTimer({endDate}) {
-  const [targetDate, setTargetDate] = useState(new Date(endDate));
-  const [timeRemaining, setTimeRemaining] = useState(false);
+function CountdownTimer({onEndFn, endDate, status, product }) {
+  const [timeRemaining, setTimeRemaining] = useState(status !== 'Closed');
 
   function calculateTimeRemaining() {
     const now = new Date();
-    const difference = targetDate.getTime() - now.getTime();
+    const difference = new Date(endDate).getTime() - now.getTime();
   
     if (difference > 0) {
       setTimeRemaining({
@@ -16,14 +15,24 @@ function CountdownTimer({endDate}) {
         minutes: Math.floor((difference / 1000 / 60) % 60),
         seconds: Math.floor((difference / 1000) % 60)
       });
+    } else {
+      if (status === "Available") {
+      
+        setTimeRemaining(false)
+        onEndFn()
+      }
+    
     }
   }
 
   useEffect(() => {
-    const intervalId = setInterval(() => {
-      calculateTimeRemaining();
-    }, 1);
-    return () => clearInterval(intervalId);
+    if (status !== 'Closed') {
+      const intervalId = setInterval(() => {
+        calculateTimeRemaining();
+      }, 1);
+
+      return () => clearInterval(intervalId);
+    }
   }, []);
 
   
