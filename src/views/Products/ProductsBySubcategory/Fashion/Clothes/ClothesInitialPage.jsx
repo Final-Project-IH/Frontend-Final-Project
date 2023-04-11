@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { categoryDetailClothes } from "../../../../../services/CategoriesService";
 import { useParams } from "react-router";
-import ClothesList from "../../../../../components/Categories/Fashion/ClothesList";
+
 import { Link } from "react-router-dom";
+import ProductList from "../../../../../components/Products/ProductList";
 
 const ClothesInitialPage = () => {
   const [clothesbyPrice, SetClothesPrice] = useState([]);
@@ -24,6 +25,7 @@ const ClothesInitialPage = () => {
       .catch((err) => console.log(err));
   }, []);
 
+
   useEffect(() => {
     categoryDetailClothes(id)
       .then((clothes) => {
@@ -44,7 +46,6 @@ const ClothesInitialPage = () => {
         const activeAuction = clothes.filter(
           (obj) => new Date(obj.end) > currentDate
         );
-        console.log(activeAuction);
         const sortedByNearToEnd = activeAuction.sort(function (a, b) {
           return new Date(b.start) - new Date(a.start);
         });
@@ -64,7 +65,7 @@ const ClothesInitialPage = () => {
             <p>See All</p>
           </Link>
         </div>
-        <ClothesList clothes={clothesbyPrice} />
+        <ProductList auctions={clothesbyPrice} />
       </div>
       <div>
         <div className="d-flex justify-content-between">
@@ -73,7 +74,7 @@ const ClothesInitialPage = () => {
             <p>See All</p>
           </Link>
         </div>
-        <ClothesList clothes={clothesLast} />
+        <ProductList auctions={clothesLast} />
       </div>
       <div>
         <div className="d-flex justify-content-between">
@@ -82,7 +83,7 @@ const ClothesInitialPage = () => {
             <p>See All</p>
           </Link>
         </div>
-        <ClothesList clothes={clothesNearToEnd} />
+        <ProductList auctions={clothesNearToEnd} />
       </div>
     </div>
   );

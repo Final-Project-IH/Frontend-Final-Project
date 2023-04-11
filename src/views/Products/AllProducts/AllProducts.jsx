@@ -20,7 +20,7 @@ const AllProducts = () => {
     if (loading) {
       return <p>Loading...</p>;
     }
-    return <ProductList products={products} />;
+    return <ProductList auctions={products} />;
   };
   return <div><CategoryList /> {renderProducts()}</div>;
 };

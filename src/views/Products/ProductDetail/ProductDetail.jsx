@@ -15,6 +15,8 @@ const ProductDetail = () => {
       .catch((err) => console.log(err));
   }, []);
 
+  console.log("entro", product)
+
   useInterval(fetchProductDetail, 100000); //CAMBIAR A 5000(5SEC)llama a la Api cada 5 segundos para ver si hay cambios en la puja
 
   useEffect(() => {

@@ -8,3 +8,5 @@ export const productDetail = (id) => unauthenticatedHttp.get(`/products/${id}`)
 
 export const createBid = (id) => authenticatedHttp.post(`/products/${id}/createBid`)
 
+export const changeStatus = (id) => unauthenticatedHttp.post(`/products/${id}/changeStatus`)
+
