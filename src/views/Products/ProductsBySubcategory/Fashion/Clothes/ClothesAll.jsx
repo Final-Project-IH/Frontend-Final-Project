@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { categoryDetailClothes } from "../../../../../services/CategoriesService";
 import { useParams } from "react-router";
 import ClothesList from "../../../../../components/Categories/Fashion/ClothesList";
-import PaginatedItems from "../../../../../components/Paginate/Paginate";
 import ProductList from "../../../../../components/Products/ProductList";
 
 

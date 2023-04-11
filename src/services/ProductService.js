@@ -6,7 +6,8 @@ const unauthenticatedHttp = createHttp(false);
 export const listProduct = () => unauthenticatedHttp.get("/products");
 export const productDetail = (id) => unauthenticatedHttp.get(`/products/${id}`);
 
-export const createProduct = () => authenticatedHttp.post("/new-product");
+export const createProduct = (productData) =>
+  authenticatedHttp.post("/new-product", productData);
 
 export const createBid = (id) =>
   authenticatedHttp.post(`/products/${id}/createBid`);
