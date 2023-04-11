@@ -60,6 +60,10 @@ const CreateProduct = () => {
       formData.append("start", values.start);
       formData.append("end", values.end);
 
+      [...values.image].forEach((file, index) => {
+        formData.append(`img-${index}`, file);
+      });
+
       createProduct(formData)
         .then((response) => {
           console.log("******* ", response);
@@ -71,6 +75,8 @@ const CreateProduct = () => {
       setSubmitting(false);
     },
   });
+
+  let today = new Date().toISOString().split("T")[0];
 
   return (
     <div>
@@ -135,7 +141,7 @@ const CreateProduct = () => {
               type="file"
               multiple
               onChange={(event) => {
-                setFieldValue("image", event.currentTarget.files[0]);
+                setFieldValue("image", event.currentTarget.files);
               }}
             />
           </FormControl>
@@ -223,7 +229,7 @@ const CreateProduct = () => {
             />
           </FormControl>
 
-          <FormControl
+          {/* <FormControl
             text="start"
             error={touched.start && errors.start}
             htmlFor="start"
@@ -238,7 +244,7 @@ const CreateProduct = () => {
               error={touched.start && errors.start}
               placeholder="Enter product start..."
             />
-          </FormControl>
+          </FormControl> */}
           <FormControl
             text="end"
             error={touched.end && errors.end}
@@ -253,6 +259,7 @@ const CreateProduct = () => {
               value={values.end}
               error={touched.end && errors.end}
               placeholder="Enter product end..."
+              min={today}
             />
           </FormControl>
           <button
