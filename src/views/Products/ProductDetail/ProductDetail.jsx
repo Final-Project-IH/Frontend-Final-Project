@@ -1,13 +1,16 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useCallback, useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { productDetail } from "../../../services/ProductService";
 import Bidslist from "../../../components/Bids/Bidslist";
 import ProductDetailed from "../../../components/Products/ProductDetail";
 import useInterval from "../../../hooks/useInterval";
+import AuthContext from "../../../contexts/Auth.context";
 
 const ProductDetail = () => {
   const [product, setProduct] = useState(null);
   const { id } = useParams();
+
+  const { manageLikes } = useContext(AuthContext)
 
   const fetchProductDetail = useCallback(() => {
     productDetail(id)
@@ -15,7 +18,9 @@ const ProductDetail = () => {
       .catch((err) => console.log(err));
   }, []);
 
-  console.log("entro", product)
+
+  // la peti a dar like y va bien
+      // manageLikes(product.id, like de la api)
 
   useInterval(fetchProductDetail, 100000); //CAMBIAR A 5000(5SEC)llama a la Api cada 5 segundos para ver si hay cambios en la puja
 
@@ -33,7 +38,7 @@ const ProductDetail = () => {
         <ProductDetailed product={product} />
       </div>
       <div className="card">
-        <Bidslist bids={product.bids} product={product} />
+        <Bidslist id={id} bids={product.bids} product={product} />
       </div>
     </div>
   );

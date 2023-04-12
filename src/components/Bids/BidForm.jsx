@@ -1,14 +1,13 @@
 import { useFormik } from "formik";
 import FormControl from "../../assets/Forms/FormControl";
 import Input from "../../assets/Forms/Input";
-import { offerSchema } from "../../utils/schemas/offer.schema";
 import { createBid } from "../../services/ProductService";
+import { bidformSchema } from "../../utils/schemas/bidform.schema";
 
-const BidForm = ({ lastOffer }) => {
+const BidForm = ({ lastOffer, id }) => {
   const initialValues = {
     offer: `${lastOffer}`,
   };
-  console.log(lastOffer);
 
   const {
     values,
@@ -19,17 +18,23 @@ const BidForm = ({ lastOffer }) => {
     isSubmitting,
     handleSubmit,
     setSubmitting,
+    setErrors
   } = useFormik({
     initialValues: initialValues,
     validateOnBlur: true,
     validateOnChange: false,
-    validationSchema: offerSchema,
+    validationSchema: bidformSchema,
     onSubmit: (values) => {
+      if (values.offer <= lastOffer) {
+        setErrors({ offer: "Should be Greater than last offer"})
+        setSubmitting(false);
+        return 
+      }
       setTimeout(() => {
         setSubmitting(false);
       }, 1000);
 
-      createBid(values)
+      createBid(id, values.offer)
         .then((response) => {
           console.log(response);
         })
