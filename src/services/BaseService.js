@@ -1,5 +1,5 @@
 import axios from "axios";
-import { getAccessToken } from "../stores/AccessTokenStore";
+import { getAccessToken, logout } from "../stores/AccessTokenStore";
 
 const INVALID_STATUS_CODES = [401];
 
@@ -25,14 +25,13 @@ export const createHttp = (useAccessToken = false) => {
       if (
         error?.response?.status &&
         INVALID_STATUS_CODES.includes(error.response.status)
-      )
-        //   {
-        //     if (getAccessToken()) {
-        //       logout();
-        //     }
-        //   }
+      ) {
+        if (getAccessToken()) {
+          logout();
+        }
+      }
 
-        return Promise.reject(error);
+      return Promise.reject(error);
     }
   );
 
