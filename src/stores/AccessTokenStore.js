@@ -10,3 +10,9 @@ export const setAccessToken = (token) => {
 export const getAccessToken = () => {
   return _accessToken; // nos devuelve el token del localStorage con la clave accessToken
 };
+
+export const logout = () => {
+  localStorage.removeItem(JWT_TOKEN_KEY);
+
+  window.location.assign("/login"); // lo "mismo" que el redirect, para redireccionar a /login
+};

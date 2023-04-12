@@ -11,7 +11,6 @@ import {
   categoryOptions,
   subcategoryOptions,
 } from "./categoriesData";
-//import { REQUIRED_FIELD, REQUIRED_LENGTH, URL_VALID } from '../../utils/errors'
 
 const initialValues = {
   name: "",

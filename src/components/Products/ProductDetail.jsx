@@ -1,5 +1,5 @@
 import React from "react";
-
+import Favorite from "../misc/Favorite/Favorite";
 
 const ProductDetailed = ({ product }) => {
   return (
@@ -9,7 +9,7 @@ const ProductDetailed = ({ product }) => {
       <p>{product.product.description}</p>
       <p>{product.product.state}</p>
       <h1>Actual Price: {product.initialPrice}</h1>
-     
+      <Favorite />
     </div>
   );
 };
