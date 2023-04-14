@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { categoryDetailClothes } from "../../../../../services/CategoriesService";
+import { categoryDetailAccesories } from "../../../../../services/CategoriesService";
 import { useParams } from "react-router";
-
 import { Link } from "react-router-dom";
 import ProductList from "../../../../../components/Products/ProductList";
 
-const ClothesInitialPage = () => {
+const AccesoriesInitialPage = () => {
   const [productbyPrice, setProductPrice] = useState([]);
   const [productLast, setProductLast] = useState([]);
   const [productNearToEnd, setProductNearToEnd] = useState([]);
@@ -13,7 +12,7 @@ const ClothesInitialPage = () => {
   const { id } = useParams();
 
   useEffect(() => {
-    categoryDetailClothes(id)
+    categoryDetailAccesories(id)
       .then((product) => {
         const sortedByPrice = product.sort(
           (a, b) => a.initialPrice - b.initialPrice
@@ -77,4 +76,4 @@ const ClothesInitialPage = () => {
   );
 };
 
-export default ClothesInitialPage;
+export default AccesoriesInitialPage;

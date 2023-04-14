@@ -21,16 +21,25 @@ export const AuthProvider = ({ children }) => {
   const getCurrentUser = useCallback((callback) => {
     getCurrentUserService() // llama a /users/me para que con el token, me traiga a mi usuario, se lo enchufe al contexto y toda mi aplicación sepa quien es
       .then((user) => {
-    
         setCurrentUser(user);
         setIsAuthLoaded(true);
         callback && callback(); // Para cuando necesite redirigir despues de un login
       });
   }, []);
-const manageLikes = (auctionId, like) => {
-  // setCurrentUser({ ...currentUser, likes: [ ...currentUser.likes, like]})
-  // setCurrentUser({ ...currentUser, likes: currentUser.likes.filter(....)})
-}
+
+  if(currentUser){
+    console.log(currentUser.favorites)
+  }
+  
+  
+  const manageFavorites = (id, favorite) => {
+    if (!currentUser.favorites.find(e=>e.favorites.auction === id)){
+      setCurrentUser({ ...currentUser, favorites: [ ...currentUser.favorites, favorite]})
+    } else {
+      setCurrentUser({ ...currentUser, favorites: currentUser.favorites.filter((obj) => !id)})
+    }
+  };
+  
   const login = useCallback(
     (token) => {
       const navigateToHome = () => {
@@ -55,9 +64,9 @@ const manageLikes = (auctionId, like) => {
       currentUser, // Usuario que está en sesión
       isAuthLoaded, // Si ya intenté saber si hay usuario en sesión
       login, // login
-      manageLikes
+      manageFavorites,
     };
-  }, [currentUser, isAuthLoaded, login, manageLikes]);
+  }, [currentUser, isAuthLoaded, login, manageFavorites]);
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 };
