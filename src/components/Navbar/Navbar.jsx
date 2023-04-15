@@ -2,9 +2,14 @@ import { NavLink } from "react-router-dom";
 import { useContext } from "react";
 import AuthContext from "../../contexts/Auth.context";
 import { logout } from "../../stores/AccessTokenStore";
+import NotificationContext from "../../contexts/Notification.context";
+import Notification from "../misc/Notification/Notification";
 
 const Navbar = () => {
   const { currentUser } = useContext(AuthContext);
+  const { notifications } = useContext(NotificationContext)
+
+  console.log(notifications)
 
   const logoutUser = () => {
     logout();
@@ -25,9 +30,14 @@ const Navbar = () => {
               </li>
             )}
             {currentUser && (
-              <li className="nav-item">
-                <button onClick={logoutUser}>Logout</button>
-              </li>
+              <>
+                <li className="nav-item">
+                  <Notification />
+                </li>
+                <li className="nav-item">
+                  <button onClick={logoutUser}>Logout</button>
+                </li>
+              </>
             )}
           </ul>
         </div>
