@@ -11,7 +11,7 @@ import {
   categoryOptions,
   subcategoryOptions,
 } from "./categoriesData";
-
+const now = new Date()
 const initialValues = {
   name: "",
   shortDescription: "",
@@ -20,9 +20,9 @@ const initialValues = {
   image: "",
   shipment: "",
   category: "",
-  subcategory: "",
+  subcategories: "",
   initialPrice: "",
-  start: "",
+  start: now,
   end: "",
 };
 
@@ -54,7 +54,7 @@ const CreateProduct = () => {
       formData.append("image", values.image);
       formData.append("shipment", values.shipment);
       formData.append("category", values.category);
-      formData.append("subcategory", values.subcategory);
+      formData.append("subcategories", values.subcategories);
       formData.append("initialPrice", values.initialPrice);
       formData.append("start", values.start);
       formData.append("end", values.end);
@@ -211,18 +211,18 @@ const CreateProduct = () => {
           </FormControl>
 
           <FormControl
-            text="subcategory"
-            error={touched.subcategory && errors.subcategory}
-            htmlFor="subcategory"
+            text="subcategories"
+            error={touched.subcategories && errors.subcategories}
+            htmlFor="subcategories"
           >
             <Select
-              id="subcategory"
-              name="subcategory"
+              id="subcategories"
+              name="subcategories"
               type="text"
               onChange={handleChange}
               onBlur={handleBlur}
-              value={values.subcategory}
-              error={touched.subcategory && errors.subcategory}
+              value={values.subcategories}
+              error={touched.subcategories && errors.subcategories}
               disabled={values.category === ""}
               options={subcategoryOptions[values.category]}
             />

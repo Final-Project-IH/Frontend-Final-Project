@@ -27,24 +27,24 @@ export const stateOptions = [
 export const categoryOptions = [
   {
     label: "Fashion",
-    value: "643599a5da0f8c765458cb1b",
+    value: "642b0e43261604ba1d7c2b97",
   },
   {
     label: "Home",
-    value: "643599a5da0f8c765458cb1c",
+    value: "642b0e43261604ba1d7c2b98",
   },
   {
     label: "Art",
-    value: "643599a5da0f8c765458cb1d",
+    value: "642b0e43261604ba1d7c2b99",
   },
   {
     label: "Antiques",
-    value: "643599a5da0f8c765458cb1e",
+    value: "642b0e43261604ba1d7c2b9a",
   },
 ];
 
 export const subcategoryOptions = {
-  "643599a5da0f8c765458cb1b": [
+  "642b0e43261604ba1d7c2b97": [
     {
       label: "Clothes",
       value: "Clothes",
@@ -59,7 +59,7 @@ export const subcategoryOptions = {
     },
   ],
 
-  "643599a5da0f8c765458cb1c": [
+  "642b0e43261604ba1d7c2b98": [
     {
       label: "Decoration",
       value: "Decoration",
@@ -73,7 +73,7 @@ export const subcategoryOptions = {
       value: "Kitchenware",
     },
   ],
-  "643599a5da0f8c765458cb1d": [
+  "642b0e43261604ba1d7c2b99": [
     {
       label: "Prints",
       value: "Prints",
@@ -95,7 +95,7 @@ export const subcategoryOptions = {
       value: "Music",
     },
   ],
-  "643599a5da0f8c765458cb1e": [
+  "642b0e43261604ba1d7c2b9a": [
     {
       label: "Home & Decoration",
       value: "Home & Decoration",

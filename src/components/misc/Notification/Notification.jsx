@@ -24,18 +24,18 @@ const Notification = ({ currentUser, auctionId, type }) => {
     }
   }, [showNotifications])
   return (
-    <div class="nav-item dropdown">
+    <div className="nav-item dropdown">
       <button
-        class="btn dropdown-toggle"
+        className="btn dropdown-toggle"
         onClick={() => setShowNotifications(!showNotifications)}
       >
         Notifications ({unreadNotifications.length} unread)
       </button>
       {showNotifications && (
-        <ul class="dropdown-menu show">
+        <ul className="dropdown-menu show">
           {notifications.map(notification => (
             <li key={notification._id}>
-              <a class="dropdown-item" href="#">
+              <a className="dropdown-item" href="#">
                 {NOTIFICATION_MESSAGES[notification.type](notification.auction)}
               </a>
             </li>
