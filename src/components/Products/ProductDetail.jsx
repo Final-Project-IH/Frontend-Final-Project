@@ -10,6 +10,7 @@ const ProductDetailed = ({ product, updateFavorites, currentUser }) => {
       <p>{product.product.state}</p>
       <h1>Actual Price: {product.initialPrice}</h1>
       <Favorite updateFavorites={updateFavorites} auctionId={product.id} currentUser={currentUser}/>
+      <p>Likes count: {product.favorites.length}</p>
     </div>
   );
 };

@@ -12,6 +12,7 @@ import AuthContext from "../../../contexts/Auth.context";
 const ProductDetail = () => {
   const [product, setProduct] = useState(null);
   const { id } = useParams();
+ 
 
   const { manageFavorites, currentUser } = useContext(AuthContext);
 
@@ -21,17 +22,18 @@ const ProductDetail = () => {
       .catch((err) => console.log(err));
   }, []);
 
-  const updateFavorites = () => {
-    updateFavorite(id, currentUser)
+  const updateFavorites = useCallback(() => {
+    updateFavorite(id)
       .then((favorite) => {
-        manageFavorites(id , favorite);
+        manageFavorites(favorite, currentUser);
+        fetchProductDetail()
       })
       .catch((err) => console.log(err));
-  };
-  // la peti a dar like y va bien
-  // manageLikes(product.id, like de la api)
+  }, [currentUser]);
 
-  useInterval(fetchProductDetail, 100000); //CAMBIAR A 5000(5SEC)llama a la Api cada 5 segundos para ver si hay cambios en la puja
+  useInterval(fetchProductDetail, 50000); //CAMBIAR A 5000(5SEC)llama a la Api cada 5 segundos para ver si hay cambios en la puja
+ 
+console.log("product", product)
 
   useEffect(() => {
     fetchProductDetail();

@@ -27,18 +27,14 @@ export const AuthProvider = ({ children }) => {
       });
   }, []);
 
-  if(currentUser){
-    console.log(currentUser.favorites)
-  }
-  
-  
-  const manageFavorites = (id, favorite) => {
-    if (!currentUser.favorites.find(e=>e.favorites.auction === id)){
-      setCurrentUser({ ...currentUser, favorites: [ ...currentUser.favorites, favorite]})
+  //const manageFavorites = (id, favorite) => {
+  const manageFavorites = useCallback((newFavorite, currentUser) => {
+    if (!currentUser.favorites.find(favorite => favorite.auction === newFavorite.auction)){
+      setCurrentUser({ ...currentUser, favorites: [ ...currentUser.favorites, newFavorite]})
     } else {
-      setCurrentUser({ ...currentUser, favorites: currentUser.favorites.filter((obj) => !id)})
+      setCurrentUser({ ...currentUser, favorites: currentUser.favorites.filter((favorite) => favorite.auction !== newFavorite.auction)})
     }
-  };
+  }, [currentUser]);
   
   const login = useCallback(
     (token) => {
