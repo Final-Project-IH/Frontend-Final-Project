@@ -14,3 +14,5 @@ export const createBid = (id, offer) =>
 
 export const changeStatus = (id) =>
   unauthenticatedHttp.post(`/products/${id}/changeStatus`);
+
+export const updateFavorite = (id) => authenticatedHttp.post(`/products/${id}/favorites`)

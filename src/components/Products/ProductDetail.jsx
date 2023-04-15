@@ -1,7 +1,7 @@
 import React from "react";
 import Favorite from "../misc/Favorite/Favorite";
 
-const ProductDetailed = ({ product }) => {
+const ProductDetailed = ({ product, updateFavorites, currentUser }) => {
   return (
     <div>
       <h1>{product.product.name}</h1>
@@ -9,7 +9,8 @@ const ProductDetailed = ({ product }) => {
       <p>{product.product.description}</p>
       <p>{product.product.state}</p>
       <h1>Actual Price: {product.initialPrice}</h1>
-      <Favorite />
+      <Favorite updateFavorites={updateFavorites} auctionId={product.id} currentUser={currentUser}/>
+      <p>Likes count: {product.favorites.length}</p>
     </div>
   );
 };

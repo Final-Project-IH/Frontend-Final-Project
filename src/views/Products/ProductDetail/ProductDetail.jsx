@@ -1,6 +1,9 @@
 import React, { useCallback, useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { productDetail } from "../../../services/ProductService";
+import {
+  productDetail,
+  updateFavorite,
+} from "../../../services/ProductService";
 import Bidslist from "../../../components/Bids/Bidslist";
 import ProductDetailed from "../../../components/Products/ProductDetail";
 import useInterval from "../../../hooks/useInterval";
@@ -9,8 +12,9 @@ import AuthContext from "../../../contexts/Auth.context";
 const ProductDetail = () => {
   const [product, setProduct] = useState(null);
   const { id } = useParams();
+ 
 
-  const { manageLikes } = useContext(AuthContext)
+  const { manageFavorites, currentUser } = useContext(AuthContext);
 
   const fetchProductDetail = useCallback(() => {
     productDetail(id)
@@ -18,11 +22,18 @@ const ProductDetail = () => {
       .catch((err) => console.log(err));
   }, []);
 
+  const updateFavorites = useCallback(() => {
+    updateFavorite(id)
+      .then((favorite) => {
+        manageFavorites(favorite, currentUser);
+        fetchProductDetail()
+      })
+      .catch((err) => console.log(err));
+  }, [currentUser]);
 
-  // la peti a dar like y va bien
-      // manageLikes(product.id, like de la api)
-
-  useInterval(fetchProductDetail, 100000); //CAMBIAR A 5000(5SEC)llama a la Api cada 5 segundos para ver si hay cambios en la puja
+  useInterval(fetchProductDetail, 50000); //CAMBIAR A 5000(5SEC)llama a la Api cada 5 segundos para ver si hay cambios en la puja
+ 
+console.log("product", product)
 
   useEffect(() => {
     fetchProductDetail();
@@ -35,7 +46,7 @@ const ProductDetail = () => {
   return (
     <div className="d-flex justify-content-between">
       <div className="card">
-        <ProductDetailed product={product} />
+        <ProductDetailed product={product} updateFavorites={updateFavorites} currentUser={currentUser}/>
       </div>
       <div className="card">
         <Bidslist id={id} bids={product.bids} product={product} />

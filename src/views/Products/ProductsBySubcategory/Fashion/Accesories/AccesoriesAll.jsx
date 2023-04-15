@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { categoryDetailClothes } from "../../../../../services/CategoriesService";
+import { categoryDetailAccesories } from "../../../../../services/CategoriesService";
 import { useParams } from "react-router";
 import ProductList from "../../../../../components/Products/ProductList";
 
-const ClothesAll = () => {
+const AccesoriesAll = () => {
   const [product, setProduct] = useState([]);
   const [sortedByPrice, setSortedByPrice] = useState(false);
   const [sortedByNewest, setSortedByNewest] = useState(false);
@@ -12,7 +12,7 @@ const ClothesAll = () => {
   const { id } = useParams();
 
   useEffect(() => {
-    categoryDetailClothes(id)
+    categoryDetailAccesories(id)
       .then((product) => {
         setLoading(false);
         setProduct(product);
@@ -66,4 +66,4 @@ const ClothesAll = () => {
   );
 };
 
-export default ClothesAll;
+export default AccesoriesAll;
