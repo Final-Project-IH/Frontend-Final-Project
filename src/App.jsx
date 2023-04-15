@@ -14,7 +14,7 @@ import ProductsFashion from "./views/Products/ProductsByCategory/ProductsFashion
 import ClothesAll from "./views/Products/ProductsBySubcategory/Fashion/Clothes/ClothesAll";
 import ClothesInitialPage from "./views/Products/ProductsBySubcategory/Fashion/Clothes/ClothesInitialPage";
 import CreateProduct from "./views/Products/CreateProduct/CreateProduct";
-//import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
+import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
 import AuthContext from "./contexts/Auth.context";
 import AccesoriesInitialPage from "./views/Products/ProductsBySubcategory/Fashion/Accesories/AccesoriesInitialPage";
 import AccesoriesAll from "./views/Products/ProductsBySubcategory/Fashion/Accesories/AccesoriesAll";
@@ -56,11 +56,11 @@ function App() {
             path="products/category/:id/fashion/accesories/browse-products"
             element={<AccesoriesAll />}
           />
-            <Route
+          <Route
             path="products/category/:id/fashion/shoes"
             element={<ShoesInitialPage />}
           />
-            <Route
+          <Route
             path="products/category/:id/fashion/shoes/browse-products"
             element={<ShoesAll />}
           />
@@ -73,8 +73,33 @@ function App() {
             element={<ProductsAntiques />}
           />
           {/* <Route path="products/category/:id/antiques" element={<ProductsAntiques />} /> */}
+
           <Route path="products/category" element={<CategoryList />} />
-          <Route path="/new-product" element={<CreateProduct />} />
+
+          <Route
+            path="new-product"
+            element={
+              <ProtectedRoute>
+                <CreateProduct />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="users/me"
+            element={
+              <ProtectedRoute>
+                <CreateProduct />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="users/me/favorites"
+            element={
+              <ProtectedRoute>
+                <CreateProduct />
+              </ProtectedRoute>
+            }
+          />
         </Routes>
       </div>
     </div>
