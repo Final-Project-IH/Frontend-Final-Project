@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import CategoryList from "./CategoryList";
 
-const CategoryList = () => {
+const CategoryListBar = () => {
   return (
     <div>
-      <div className="row d-flex justify-content-between">
+      {/* <div className="row d-flex justify-content-between">
         <Link to={`/products/category/642b0e43261604ba1d7c2b97/fashion`} style={{ textDecoration: "none" }}>
         <h4>Fashion</h4>
         </Link>
@@ -17,9 +18,10 @@ const CategoryList = () => {
         <Link to={`/products/category/642b0e43261604ba1d7c2b9a/antiques`} style={{ textDecoration: "none" }}>
         <h4>Antiques</h4>
         </Link>
-      </div>
+      </div> */}
+      <CategoryList />
     </div>
   );
 };
 
-export default CategoryList;
+export default CategoryListBar;

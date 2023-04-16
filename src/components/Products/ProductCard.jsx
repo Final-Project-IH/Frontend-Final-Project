@@ -15,7 +15,6 @@ const ProductCard = ({ product, auction }) => {
 
   const handleAuctionState = useCallback(() => {
     if (auction.status === "Available") {
-      console.log('entro')
       changeStatus(auctionData._id)
         .then((auctionApi) => {
           setProductData(auctionApi.product);

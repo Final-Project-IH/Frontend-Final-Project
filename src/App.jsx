@@ -22,6 +22,7 @@ import ProductsAntiques from "./views/Products/ProductsByCategory/ProductsAntiqu
 import ShoesInitialPage from "./views/Products/ProductsBySubcategory/Fashion/Shoes/ShoesInitialPage";
 import ShoesAll from "./views/Products/ProductsBySubcategory/Fashion/Shoes/ShoesAll";
 import ProductsHome from "./views/Products/ProductsByCategory/ProductsHome";
+import CategoryListBar from "./components/Categories/CategoryListBar";
 
 function App() {
   return (
@@ -73,7 +74,7 @@ function App() {
             element={<ProductsAntiques />}
           />
           {/* <Route path="products/category/:id/antiques" element={<ProductsAntiques />} /> */}
-          <Route path="products/category" element={<CategoryList />} />
+          <Route path="products/category" element={<CategoryListBar />} />
           <Route path="/new-product" element={<CreateProduct />} />
         </Routes>
       </div>
