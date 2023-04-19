@@ -7,6 +7,7 @@ import { loginSchema } from '../../../utils/schemas/login.schema';
 import { login as loginService } from "./../../../services/Auth.service";
 import AuthContext from "../../../contexts/Auth.context";
 import { setAccessToken } from "../../../stores/AccessTokenStore";
+import { Navigate } from 'react-router-dom';
 
 
 const initialValues = {

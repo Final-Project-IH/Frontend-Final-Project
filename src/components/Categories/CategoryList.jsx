@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { listCategories } from "../../services/CategoriesService";
-import CategoryCard from "./CategoryCard";
+import { Link } from "react-router-dom";
+import "./categories.css"
 
 const CategoryList = () => {
   const [category, setCategory] = useState([]);
@@ -15,18 +16,27 @@ const CategoryList = () => {
       .catch((err) => console.log(err));
   }, []);
 
-  console.log("categorias", category)
+  console.log("categorias", category);
 
-
-  return <div>
-    <div className="row">
-      {category.map((category) => (
-        <div key={category._id} className="col mb-3">
-          <CategoryCard {...category} />
-        </div>
-      ))}
+  return (
+    <div>
+      <div className="row m-3 d-flex justify-content-center">
+        {category.map((category) => (
+          <div
+            key={category._id}
+            className="d-flex justify-content-between m-1"
+          >
+            <Link
+              to={`/products/category/${category._id}/${category.title}`}
+              style={{ textDecoration: "none" }}
+            >
+             <button type="button" className="btn btn-outline-primary">{category.title}</button>
+            </Link>
+          </div>
+        ))}
+      </div>
     </div>
-  </div>;
+  );
 };
 
 export default CategoryList;

@@ -1,16 +1,19 @@
 import React from "react";
 import ProductCard from "./ProductCard";
-import CountdownTimer from "../CountDownTimer/CountDownTimer";
+import "./ProductList.css"
 
-const ProductList = ({ products }) => {
+const ProductList = ({ auctions, statusFilter }) => {
   return (
-    <div className="row row-cols-1 row-cols-md-3 g-3">
-      {products.map((product) => (
-        <div key={product._id} className="col mb-3">
-          <ProductCard {...product} />
-          <CountdownTimer endDate={product.end}/>
+    <div className="row justify-content-start ml-5">
+      {auctions?.map((auction) => {
+        if (statusFilter && auction.status === 'Closed') return null
+        return (
+        
+        <div key={auction._id} className="col-xl-3 col-lg-5 col-md-5 col-sm-12 col-xs-12 m-0 p-0">
+          <ProductCard product={auction.product} auction={auction} />
         </div>
-      ))}
+      );
+      })}
     </div>
   );
 };

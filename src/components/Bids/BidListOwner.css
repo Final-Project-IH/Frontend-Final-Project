@@ -1,0 +1,12 @@
+.auction-status {
+    border: 1px solid #019891;
+    text-align: center;
+}
+
+.last-bid {
+    text-align: center;
+}
+
+.last-bid-price {
+    font-size: 40px;
+}

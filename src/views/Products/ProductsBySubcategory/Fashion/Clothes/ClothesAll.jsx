@@ -1,0 +1,81 @@
+import React, { useEffect, useState } from "react";
+import { categoryDetailClothes } from "../../../../../services/CategoriesService";
+import { useParams } from "react-router";
+import ProductList from "../../../../../components/Products/ProductList";
+
+const ClothesAll = () => {
+  const [product, setProduct] = useState([]);
+  // const [sortedByPrice, setSortedByPrice] = useState(false);
+  // const [sortedByNewest, setSortedByNewest] = useState(false);
+  const [filterByActive, setFilterByActive] = useState(false);
+  // const [sortedByLowerPrice, setsortedByLowerPrice] = useState(false);
+  const [loading, setLoading] = useState(true);
+  const { id } = useParams();
+
+  useEffect(() => {
+    categoryDetailClothes(id)
+      .then((product) => {
+        setLoading(false);
+        setProduct(product);
+      })
+      .catch((err) => console.log(err));
+  }, []);
+
+  const Availablefilter = product.filter(product => product.status === "Available")
+  const currentDate = new Date();
+  const activeAuction = Availablefilter.filter(
+          (obj) => new Date(obj.end) > currentDate
+        );
+
+  const handleSortByLowerPrice = () => {
+      setProduct([...activeAuction].sort((a, b) => a.initialPrice - b.initialPrice));
+  };
+
+  const handleSortByHighestPrice = () => {
+    setProduct([...activeAuction].sort((a, b) => b.initialPrice - a.initialPrice));
+};
+
+    const handleSortByNewest = () => {
+      setProduct(
+        [...activeAuction].sort(function (a, b) {
+        return new Date(b.start) - new Date(a.start);
+        })
+      );
+  };
+
+  const handleSortByNearToEnd = () => {
+    setProduct(
+      [...activeAuction].sort(function (a, b) {
+       return new Date(a.end) - new Date(b.end);
+      })
+    );
+};
+
+  const handleFilterByActive = () => {
+    setFilterByActive(!filterByActive);
+  };
+
+ 
+
+  return (
+
+    <div>
+    <div className="dropdown">
+  <button className="btn btn-secondary dropdown-toggle m-3" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Let´s Filter
+  </button>
+  <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
+    <a className="dropdown-item" onClick={handleSortByLowerPrice}>Order by Lower Price</a>
+    <a className="dropdown-item" onClick={handleSortByHighestPrice}> Order by Highest Price</a>
+    <a className="dropdown-item" onClick={handleSortByNewest}> Order by Newest</a>
+    <a className="dropdown-item" onClick={handleSortByNearToEnd}> Near to End</a>
+  </div>
+</div>
+      <div>
+        <ProductList statusFilter={filterByActive} auctions={product} />
+      </div>
+    </div>
+  );
+};
+
+export default ClothesAll;

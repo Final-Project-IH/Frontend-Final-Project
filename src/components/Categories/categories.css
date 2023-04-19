@@ -1,0 +1,10 @@
+.btn-outline-primary {
+    color: #000000 !important;
+    border-color: #019891;
+    
+}
+
+.btn-outline-primary:hover {
+    background-color:#019891;
+    transition: 0.5s;
+}

@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from 'react';
+import "./CountDownTimer.css"
 
-
-function CountdownTimer({endDate}) {
-  const [targetDate, setTargetDate] = useState(new Date(endDate));
-  const [timeRemaining, setTimeRemaining] = useState(false);
+function CountdownTimer({onEndFn, endDate, status }) {
+  const [timeRemaining, setTimeRemaining] = useState(status !== 'Closed');
 
   function calculateTimeRemaining() {
     const now = new Date();
-    const difference = targetDate.getTime() - now.getTime();
+    const difference = new Date(endDate).getTime() - now.getTime();
   
     if (difference > 0) {
       setTimeRemaining({
@@ -16,24 +15,33 @@ function CountdownTimer({endDate}) {
         minutes: Math.floor((difference / 1000 / 60) % 60),
         seconds: Math.floor((difference / 1000) % 60)
       });
+    } else {
+      if (status === "Available") {
+      
+        setTimeRemaining(false)
+        onEndFn()
+      }
+    
     }
   }
 
   useEffect(() => {
-    const intervalId = setInterval(() => {
-      calculateTimeRemaining();
-    }, 1);
-    return () => clearInterval(intervalId);
+    if (status !== 'Closed') {
+      const intervalId = setInterval(() => {
+        calculateTimeRemaining();
+      }, 1);
+
+      return () => clearInterval(intervalId);
+    }
   }, []);
 
   
   return (
-    <div>
-      {!timeRemaining ? <p>Closed</p> : <p>{timeRemaining.days} days, {timeRemaining.hours} hours, {timeRemaining.minutes} minutes, {timeRemaining.seconds} seconds</p>}
+    <div className='timer'>
+      {!timeRemaining ? <p>Closed</p> : <p style={{fontSize:"15px"}}>{timeRemaining.days} days, {timeRemaining.hours} hours, {timeRemaining.minutes} minutes, {timeRemaining.seconds} seconds</p>}
     </div>
   );
 
-  //PREGUNTAR COMO SE HARÍA PARA QUE NO SE PRINTE JUSTO ESE SEGUNDO EN CLOSED. ESTÁ BIEN ASÍ?? }, 1);
 
 }
 
