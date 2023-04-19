@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-
+import "./CountDownTimer.css"
 
 function CountdownTimer({onEndFn, endDate, status }) {
   const [timeRemaining, setTimeRemaining] = useState(status !== 'Closed');
@@ -37,13 +37,11 @@ function CountdownTimer({onEndFn, endDate, status }) {
 
   
   return (
-    <div>
-      {!timeRemaining ? <p>Closed</p> : <p>{timeRemaining.days} days, {timeRemaining.hours} hours, {timeRemaining.minutes} minutes, {timeRemaining.seconds} seconds</p>}
+    <div className='timer'>
+      {!timeRemaining ? <p>Closed</p> : <p style={{fontSize:"15px"}}>{timeRemaining.days} days, {timeRemaining.hours} hours, {timeRemaining.minutes} minutes, {timeRemaining.seconds} seconds</p>}
     </div>
   );
 
-  //PREGUNTAR COMO SE HARÍA PARA QUE NO SE PRINTE JUSTO ESE SEGUNDO EN CLOSED. 
-  //ESTÁ BIEN ASÍ?? }, 1);
 
 }
 

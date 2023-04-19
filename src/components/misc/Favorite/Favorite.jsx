@@ -1,20 +1,35 @@
-import React from "react";
+import React, { useEffect, useContext, useState } from "react";
+import AuthContext from "../../../contexts/Auth.context";
 
-const Favorite = ({ updateFavorites, currentUser, auctionId }) => {
-  // console.log({auctionId})
-  // console.log({currentUser})
-  const isFavorited = !!currentUser?.favorites.find(
-    (favorites) => favorites.auction === auctionId
+const Favorite = ({ auctionId, updateFavorites }) => {
+  const { currentUser, manageFavorites } = useContext(AuthContext);
+  console.log('currentUser', currentUser)
+
+  const isFavorited = currentUser?.favorites.find(
+    (favorite) => favorite.auction._id === auctionId
   );
+
+  const handleFavoriteClick = () => {
+    updateFavorites()
+
+  };
+  
+
   return (
     <div>
       {isFavorited ? (
         <div className="Favorite">
-          <i onClick={updateFavorites} className="bi-heart-fill"></i>
+          <i
+            onClick={handleFavoriteClick}
+            className="bi-heart-fill"
+          ></i>
         </div>
       ) : (
         <div className="Favorite">
-          <i onClick={updateFavorites} className="bi bi-heart"></i>
+          <i
+            onClick={handleFavoriteClick}
+            className="bi bi-heart"
+          ></i>
         </div>
       )}
     </div>

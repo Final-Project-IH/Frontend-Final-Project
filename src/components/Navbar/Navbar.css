@@ -1,0 +1,22 @@
+nav {
+    height: 50px;
+    z-index: 9;
+}
+
+.navbar-collapse {
+    background-color: white;
+}
+
+.collapse .navbar-collapse{
+    display: flex;
+    justify-content: end !important;
+}
+
+.nav-btn{
+    background-color: #019891;
+    color: white;
+    height: 30px;
+    border-radius: 15%;
+    margin-left: 10px;
+    text-decoration: none;
+}

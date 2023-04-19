@@ -10,6 +10,7 @@ import {
 import { Link } from "react-router-dom";
 import CategoryList from "../../../components/Categories/CategoryListBar";
 import ProductList from "../../../components/Products/ProductList";
+import "./ProductsByCategory.css";
 
 const ProductsArt = () => {
   const [prints, setPrints] = useState([]);
@@ -23,7 +24,10 @@ const ProductsArt = () => {
   useEffect(() => {
     categoryDetailPrints(id)
       .then((prints) => {
-        let printsSlice = prints.slice(0, 2);
+        const Availablefilter = prints.filter(
+          (prints) => prints.status === "Available"
+        );
+        let printsSlice = Availablefilter.slice(0, 2);
         setLoading(false);
         setPrints(printsSlice);
       })
@@ -33,7 +37,10 @@ const ProductsArt = () => {
   useEffect(() => {
     categoryDetailPhotography(id)
       .then((photography) => {
-        let photographySlice = photography.slice(0, 2);
+        const Availablefilter = photography.filter(
+          (photography) => photography.status === "Available"
+        );
+        let photographySlice = Availablefilter.slice(0, 2);
         setLoading(false);
         setPhotography(photographySlice);
       })
@@ -43,7 +50,10 @@ const ProductsArt = () => {
   useEffect(() => {
     categoryDetailFrames(id)
       .then((frames) => {
-        let framesSlice = frames.slice(0, 2);
+        const Availablefilter = frames.filter(
+          (frames) => frames.status === "Available"
+        );
+        let framesSlice = Availablefilter.slice(0, 2);
         setLoading(false);
         setFrames(framesSlice);
       })
@@ -53,7 +63,10 @@ const ProductsArt = () => {
   useEffect(() => {
     categoryDetailBooks(id)
       .then((books) => {
-        let booksSlice = books.slice(0, 2);
+        const Availablefilter = books.filter(
+          (books) => books.status === "Available"
+        );
+        let booksSlice = Availablefilter.slice(0, 2);
         setLoading(false);
         setBooks(booksSlice);
       })
@@ -63,7 +76,10 @@ const ProductsArt = () => {
   useEffect(() => {
     categoryDetailMusic(id)
       .then((music) => {
-        let musicSlice = music.slice(0, 2);
+        const Availablefilter = music.filter(
+          (music) => music.status === "Available"
+        );
+        let musicSlice = Availablefilter.slice(0, 2);
         setLoading(false);
         setMusic(musicSlice);
       })
@@ -73,49 +89,75 @@ const ProductsArt = () => {
   return (
     <div>
       <CategoryList />
-      <Link to={"/"}>
-        <span>Home</span>
-      </Link>
-      <span> ➱</span>
-      <Link to={"/products/category/642b0e43261604ba1d7c2b99/art"}>
-        <span>Category</span>
-      </Link>
+     <nav aria-label="breadcrumb">
+        <ol className="breadcrumb">
+          <li className="breadcrumb-item">
+            <a href="/">Home</a>
+          </li>
+          <li className="breadcrumb-item active" aria-current="page">
+            Art
+          </li>
+        </ol>
+      </nav>
+      <h1 className="m-3">Art</h1>
       <div>
         <div className="d-flex justify-content-between">
-          <h1>Prints</h1>
+          <h4 className="ml-3">Prints</h4>
           <Link to={"prints"} style={{ textDecoration: "none" }}>
             <p>See All</p>
           </Link>
         </div>
-        <ProductList auctions={prints} />
+        {prints.length > 0 ? (
+          <ProductList auctions={prints} />
+        ) : (
+          <p>Not products yet</p>
+        )}
         <div className="d-flex justify-content-between">
-          <h1>Photography</h1>
+          <h4>Photography</h4>
           <Link to={"photography"} style={{ textDecoration: "none" }}>
             <p>See All</p>
           </Link>
         </div>
-        <ProductList auctions={photography} />
+        {photography.length > 0 ? (
+          <ProductList auctions={photography} />
+        ) : (
+          <p>Not products yet</p>
+        )}
         <div className="d-flex justify-content-between">
-          <h1>Frames</h1>
+          <h4>Frames</h4>
           <Link to={"frames"} style={{ textDecoration: "none" }}>
             <p>See All</p>
           </Link>
         </div>
-        <ProductList auctions={frames} />
+        {frames.length > 0 ? (
+          <ProductList auctions={frames} />
+        ) : (
+          <p>Not products yet</p>
+        )}
         <div className="d-flex justify-content-between">
-          <h1>Books</h1>
+          <h4>Books</h4>
           <Link to={"books"} style={{ textDecoration: "none" }}>
             <p>See All</p>
           </Link>
         </div>
-        <ProductList auctions={books} />
+
+        {books.length > 0 ? (
+          <ProductList auctions={books} />
+        ) : (
+          <p>Not products yet</p>
+        )}
         <div className="d-flex justify-content-between">
-          <h1>Music</h1>
+          <h4>Music</h4>
           <Link to={"music"} style={{ textDecoration: "none" }}>
             <p>See All</p>
           </Link>
         </div>
-        <ProductList auctions={music} />
+
+        {music.length > 0 ? (
+          <ProductList auctions={music} />
+        ) : (
+          <p>Not products yet</p>
+        )}
       </div>
     </div>
   );

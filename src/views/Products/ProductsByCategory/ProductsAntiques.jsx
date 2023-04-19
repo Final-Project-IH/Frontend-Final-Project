@@ -8,81 +8,105 @@ import {
 import { Link } from "react-router-dom";
 import CategoryList from "../../../components/Categories/CategoryListBar";
 import ProductList from "../../../components/Products/ProductList";
-
-
+import "./ProductsByCategory.css";
 
 const ProductsAntiques = () => {
-    const [home, setHome] = useState([]);
-    const [art, setArt] = useState([]);
-    const [fashion, setfashion] = useState([]);
-    const [loading, setLoading] = useState(true);
-    const { id } = useParams();
-  
-    useEffect(() => {
-        categoryDetailAntiquesHome(id)
-        .then((home) => {
-          let homeproductSlice = home.slice(0, 2);
-          setLoading(false);
-          setHome(homeproductSlice);
-        })
-        .catch((err) => console.log(err));
-    }, []);
-  
-    useEffect(() => {
-        categoryDetailAntiquesArt(id)
-        .then((artproduct) => {
-          let artproductSlice = artproduct.slice(0, 2);
-          setLoading(false);
-          setArt(artproductSlice);
-        })
-        .catch((err) => console.log(err));
-    }, []);
-  
-    useEffect(() => {
-        categoryDetailAntiquesFashion(id)
-        .then((fashionproduct) => {
-          let fashionproductSlice = fashionproduct.slice(0, 2);
-          setLoading(false);
-          setfashion(fashionproductSlice);
-        })
-        .catch((err) => console.log(err));
-    }, []);
-  
-    return (
+  const [home, setHome] = useState([]);
+  const [art, setArt] = useState([]);
+  const [fashion, setfashion] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const { id } = useParams();
+
+  useEffect(() => {
+    categoryDetailAntiquesHome(id)
+      .then((home) => {
+        const Availablefilter = home.filter(
+          (home) => home.status === "Available"
+        );
+        let homeproductSlice = Availablefilter.slice(0, 4);
+        setLoading(false);
+        setHome(homeproductSlice);
+      })
+      .catch((err) => console.log(err));
+  }, []);
+
+  useEffect(() => {
+    categoryDetailAntiquesArt(id)
+      .then((artproduct) => {
+        const Availablefilter = artproduct.filter(
+          (artproduct) => artproduct.status === "Available"
+        );
+        let artproductSlice = Availablefilter.slice(0, 4);
+        setLoading(false);
+        setArt(artproductSlice);
+      })
+      .catch((err) => console.log(err));
+  }, []);
+
+  useEffect(() => {
+    categoryDetailAntiquesFashion(id)
+      .then((fashionproduct) => {
+        const Availablefilter = fashionproduct.filter(
+          (fashionproduct) => fashionproduct.status === "Available"
+        );
+        let fashionproductSlice = Availablefilter.slice(0, 4);
+        setLoading(false);
+        setfashion(fashionproductSlice);
+      })
+      .catch((err) => console.log(err));
+  }, []);
+
+  return (
+    <div>
+      <CategoryList />
+      <nav aria-label="breadcrumb">
+        <ol className="breadcrumb">
+          <li className="breadcrumb-item">
+            <a href="/">Home</a>
+          </li>
+          <li className="breadcrumb-item active" aria-current="page">
+            Fashion
+          </li>
+        </ol>
+      </nav>
+      <h1 className="m-3">Antiques</h1>
       <div>
-        <CategoryList />
-        <Link to={"/"}>
-          <span>Home</span>
-        </Link>
-        <span> ➱</span>
-        <Link to={"/products/category/642b0e43261604ba1d7c2b9a/antiques"}>
-          <span>Category</span>
-        </Link>
-        <div>
-          <div className="d-flex justify-content-between">
-            <h1>Home & Decoration</h1>
-            <Link to={"home-and-decoration"} style={{ textDecoration: "none" }}>
-              <p>See All</p>
-            </Link>
-          </div>
-          <ProductList auctions={home} />
-          <div className="d-flex justify-content-between">
-            <h1>Art & Frames</h1>
-            <Link to={"art-and-frames"} style={{ textDecoration: "none" }}>
-              <p>See All</p>
-            </Link>
-          </div>
-          <ProductList auctions={art} />
-          <div className="d-flex justify-content-between">
-            <h1>Fashion & Accesories</h1>
-            <Link to={"fashion-and-accesories"} style={{ textDecoration: "none" }}>
-              <p>See All</p>
-            </Link>
-          </div>
-          <ProductList auctions={fashion} />
+        <div className="d-flex justify-content-between">
+          <h4 className="ml-3">Home & Decoration</h4>
+          <Link to={"home-decoration"} style={{ textDecoration: "none" }}>
+            <p>See All</p>
+          </Link>
         </div>
+        {home.length > 0 ? (
+          <ProductList auctions={home} />
+        ) : (
+          <p>Not products yet</p>
+        )}
+        <div className="d-flex justify-content-between">
+          <h4>Art & Frames</h4>
+          <Link to={"art-frames"} style={{ textDecoration: "none" }}>
+            <p>See All</p>
+          </Link>
+        </div>
+        {art.length > 0 ? (
+          <ProductList auctions={art} />
+        ) : (
+          <p>Not products yet</p>
+        )}
+        <div className="d-flex justify-content-between">
+          <h4>Fashion & Accesories</h4>
+          <Link to={"fashion-accesories"} style={{ textDecoration: "none" }}>
+            <p>See All</p>
+          </Link>
+        </div>
+        {fashion.length > 0 ? (
+          <ProductList auctions={fashion} />
+        ) : (
+          <p>Not products yet</p>
+        )}
       </div>
-    );
-  };
+    </div>
+  );
+};
 
 export default ProductsAntiques;

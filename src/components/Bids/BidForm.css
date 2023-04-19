@@ -1,0 +1,11 @@
+.btn-bid {
+width: 288px;
+height: 56px;
+background: #019891;
+border-radius: 80px;
+border-color: #019891;
+}
+
+.bidform {
+    text-align: center;
+}

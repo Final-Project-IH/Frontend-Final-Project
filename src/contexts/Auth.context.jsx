@@ -7,13 +7,14 @@ import {
 } from "react";
 import { getAccessToken, setAccessToken } from "../stores/AccessTokenStore";
 import { getCurrentUser as getCurrentUserService, getNotifications } from "../services/User.service";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 
 const AuthContext = createContext();
 export default AuthContext;
 
 export const AuthProvider = ({ children }) => {
   const navigate = useNavigate();
+  const [searchParams, setSearchParams] = useSearchParams();
 
   const [currentUser, setCurrentUser] = useState(null); // El usuario en sesión
   const [isAuthLoaded, setIsAuthLoaded] = useState(false); // Para saber si ya tengo usuario o al menos lo he comprobado
@@ -31,18 +32,24 @@ export const AuthProvider = ({ children }) => {
   }, []);
 
   //FAVORITES
-  const manageFavorites = useCallback((newFavorite, currentUser) => {
-    if (!currentUser.favorites.find(favorite => favorite.auction === newFavorite.auction)){
+  const manageFavorites = useCallback((newFavorite, isLiked) => {
+    if (!isLiked){
       setCurrentUser({ ...currentUser, favorites: [ ...currentUser.favorites, newFavorite]})
     } else {
-      setCurrentUser({ ...currentUser, favorites: currentUser.favorites.filter((favorite) => favorite.auction !== newFavorite.auction)})
+      setCurrentUser({ ...currentUser, favorites: currentUser.favorites.filter((favorite) => favorite.auction.id !== newFavorite)})
     }
   }, [currentUser]);
 
   const login = useCallback(
     (token) => {
       const navigateToHome = () => {
-        navigate("/");
+        const auctionRef = searchParams.get("auctionRef");
+        console.log('auctionRef: ', auctionRef);
+        if (auctionRef) {
+          navigate(`/products/${auctionRef}`);
+        } else {
+          navigate("/");
+        }
       };
       setAccessToken(token);
       getCurrentUser(navigateToHome);
@@ -64,8 +71,9 @@ export const AuthProvider = ({ children }) => {
       isAuthLoaded, // Si ya intenté saber si hay usuario en sesión
       login, // login
       manageFavorites,
+      setCurrentUser
     };
-  }, [currentUser, isAuthLoaded, login, manageFavorites]);
+  }, [currentUser, isAuthLoaded, login, manageFavorites, setCurrentUser]);
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 };

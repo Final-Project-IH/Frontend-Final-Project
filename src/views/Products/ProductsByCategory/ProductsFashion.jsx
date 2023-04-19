@@ -8,6 +8,7 @@ import {
 import { Link } from "react-router-dom";
 import CategoryList from "../../../components/Categories/CategoryListBar";
 import ProductList from "../../../components/Products/ProductList";
+import "./ProductsByCategory.css";
 
 const ProductsFashion = () => {
   const [clothes, SetClothes] = useState([]);
@@ -19,7 +20,10 @@ const ProductsFashion = () => {
   useEffect(() => {
     categoryDetailClothes(id)
       .then((clothes) => {
-        let clothesSlice = clothes.slice(0, 2);
+        const Availablefilter = clothes.filter(
+          (clothes) => clothes.status === "Available"
+        );
+        let clothesSlice = Availablefilter.slice(0, 4);
         setLoading(false);
         SetClothes(clothesSlice);
       })
@@ -29,7 +33,10 @@ const ProductsFashion = () => {
   useEffect(() => {
     categoryDetailAccesories(id)
       .then((accesories) => {
-        let accesoriesSlice = accesories.slice(0, 2);
+        const Availablefilter = accesories.filter(
+          (accesories) => accesories.status === "Available"
+        );
+        let accesoriesSlice = Availablefilter.slice(0, 4);
         setLoading(false);
         SetAccesories(accesoriesSlice);
       })
@@ -39,45 +46,61 @@ const ProductsFashion = () => {
   useEffect(() => {
     categoryDetailShoes(id)
       .then((shoes) => {
-        let shoesSlice = shoes.slice(0, 2);
+        const Availablefilter = shoes.filter(
+          (shoes) => shoes.status === "Available"
+        );
+        let shoesSlice = Availablefilter.slice(0, 4);
         setLoading(false);
         SetShoes(shoesSlice);
       })
       .catch((err) => console.log(err));
   }, []);
 
+
   return (
     <div>
       <CategoryList />
-      <Link to={"/"}>
-        <span>Home</span>
-      </Link>
-      <span> ➱</span>
-      <Link to={"/products/category/642b0e43261604ba1d7c2b97/fashion"}>
-        <span>Category</span>
-      </Link>
+      <nav aria-label="breadcrumb">
+        <ol className="breadcrumb">
+          <li className="breadcrumb-item">
+            <a href="/">Home</a>
+          </li>
+          <li className="breadcrumb-item active" aria-current="page">
+            Fashion
+          </li>
+        </ol>
+      </nav>
+      <h1 className="m-3">Fashion</h1>
       <div>
         <div className="d-flex justify-content-between">
-          <h1>Clothes</h1>
+          <h4 className="ml-3">Clothes</h4>
           <Link to={"clothes"} style={{ textDecoration: "none" }}>
             <p>See All</p>
           </Link>
         </div>
         <ProductList auctions={clothes} />
         <div className="d-flex justify-content-between">
-          <h1>Accesories</h1>
+          <h4>Accesories</h4>
           <Link to={"accesories"} style={{ textDecoration: "none" }}>
             <p>See All</p>
           </Link>
         </div>
-        <ProductList auctions={accesories} />
+        {accesories.length > 0 ? (
+          <ProductList auctions={accesories} />
+        ) : (
+          <p>Not products yet</p>
+        )}
         <div className="d-flex justify-content-between">
-          <h1>Shoes</h1>
+          <h4>Shoes</h4>
           <Link to={"shoes"} style={{ textDecoration: "none" }}>
             <p>See All</p>
           </Link>
         </div>
-        <ProductList auctions={shoes} />
+        {shoes.length > 0 ? (
+          <ProductList auctions={shoes} />
+        ) : (
+          <p>Not products yet</p>
+        )}
       </div>
     </div>
   );
