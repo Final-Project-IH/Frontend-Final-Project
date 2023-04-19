@@ -1,0 +1,16 @@
+.user-image {
+    box-sizing: border-box; 
+    width: 139px;
+    height: 139px;
+    border-radius: 50%  ;
+}
+
+.profile-info{
+    width: 300px
+}
+
+.btn-edit {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
