@@ -5,10 +5,14 @@
 
 .productname, .short-desc{
     text-align: center;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
+    font-weight:bold
 }
 
-.product-desc-detail {
-    margin-top: 50px;
-    margin-left: 25px;
+.product-desc-detail{
+    padding: 50px;
+    margin-top: 80px;
+    margin-left: 15px;
+    text-align: justify;
 }
+

@@ -9,7 +9,7 @@ const NOTIFICATION_MESSAGES = {
   [SURPASSED_BID]: (auction) => <span>Your bid for <Link to={`/products/${auction.id}`}>{auction.product.name}</Link> has been surpassed</span>
 }
 
-const Notification = ({ currentUser, auctionId, type }) => {
+const   Notification = ({ currentUser, auctionId, type }) => {
   const [showNotifications, setShowNotifications] = useState(false)
   const { notifications, manageNotifications } = useContext(NotificationContext)
 

@@ -36,13 +36,6 @@ const ProfileDetail = () => {
         const auctionArr = bids.map((bid) => bid.auction);
         let auctionsSlice = auctionArr.reverse().slice(0, 4);
         setMyBidsAuctions(auctionsSlice);
-
-        // const uniqueAuctions = [];
-        // auctionArr.forEach(auction => {
-        //   if (!uniqueAuctions.includes(auction)) {
-        //     uniqueAuctions.push(auction);
-        //   }
-        // });
       })
       .catch((err) => console.log(err));
   }, []);
@@ -52,32 +45,32 @@ const ProfileDetail = () => {
       .then((favs) => {
         setLoading(false);
         const auctionArr = favs.map((fav) => fav.auction);
-        let auctionsSlice = auctionArr.slice(0, 4);
+        let auctionsSlice = auctionArr.slice(0, 5);
         setMyFavs(auctionsSlice);
       })
       .catch((err) => console.log(err));
   }, []);
 
-  // useEffect(() => {
-  //   getMyWinnedAuct()
-  //     .then((auctions) => {
-  //       setLoading(false); 
+  useEffect(() => {
+    getMyWinnedAuct()
+      .then((auctions) => {
+        for (let auction of auctions) {
+          auction.bids.sort((a, b) => b.offer - a.offer);
+        }
+        const filteredAuctions = auctions?.filter(
+          (auction) => auction?.bids[0]?.bidder?.id === currentUser?.id
+        );
 
-  //       if(auctions.bids.length > 0){
-  //         const mappedAuction = auctions.map((auction)=>{
-  //           auction?.bids?.offer.sort((a,b)=> b - a)
-  //         })
-  //         setMyWinnedAuct(mappedAuction);
-  //       }
-  //     })
-  //     .catch((err) => console.log(err));
-  // }, []);
-
-  // console.log("mapped", myWinnedAuct )
-
+        setMyWinnedAuct(filteredAuctions);
+        setLoading(false);
+      })
+      .catch((err) => console.log(err));
+  }, []);
+  console.log("ganadas", myWinnedAuct)
+  console.log("currentuser", currentUser)
   return (
     <div>
-      {currentUser ? (
+      {currentUser && !loading ? (
         <div className="ml-3">
           <div className="d-flex">
             <div className="d-flex flex-column">
@@ -98,36 +91,30 @@ const ProfileDetail = () => {
             </div>
           </div>
           <div>
-            <div className="d-flex justify-content-between m-4">
-              <h1 className="mt-3">My Auctions</h1>
-              <Link
-                to={"******************"}
-                style={{ textDecoration: "none" }}
-              >
-                <p>See All</p>
-              </Link>
+            <hr></hr>
+            <div className="d-flex justify-content-between">
+              <h4 className="ml-3">My Auctions</h4>
             </div>
             <ProductList auctions={ownAuctions} />
+            <hr></hr>
             <div className="d-flex justify-content-between m-4">
-              <h1>My Bids</h1>
-              <Link
-                to={"*******************"}
-                style={{ textDecoration: "none" }}
-              >
-                <p>See All</p>
-              </Link>
+              <h3 className="mt-4 ml-4">My Bids</h3>
             </div>
             <ProductList auctions={myBidsAuctions} />
+            <hr></hr>
             <div className="d-flex justify-content-between m-4">
-              <h1>My Favs</h1>
-              <Link
-                to={"******************"}
-                style={{ textDecoration: "none" }}
-              >
-                <p>See All</p>
-              </Link>
+              <h3 className="mt-4 ml-4">My Favs</h3>
             </div>
             <ProductList auctions={myFavs} />
+            <hr></hr>
+            <div className="d-flex justify-content-between m-4">
+              <h3 className="mt-4 ml-4">My Winned Auctions</h3>
+            </div>
+            {myWinnedAuct.length > 0 ? (
+              <ProductList auctions={myWinnedAuct} />
+            ) : (
+              <p className="mb-4">No auctions won yet.</p>
+            )}
           </div>
         </div>
       ) : (

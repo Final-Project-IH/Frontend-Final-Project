@@ -1,5 +1,5 @@
 .auction-status {
-    border: 1px solid #019891;
+    border: 1px solid #F2CB1E;
     text-align: center;
 }
 
@@ -9,4 +9,8 @@
 
 .last-bid-price {
     font-size: 40px;
+}
+
+.closed-own{
+    margin-top: 100px;
 }

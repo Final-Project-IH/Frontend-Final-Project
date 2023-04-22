@@ -1,100 +1,122 @@
-
-import { useFormik } from 'formik';
-import FormControl from '../../../assets/Forms/FormControl';
-import Input from '../../../assets/Forms/Input';
-import { register } from '../../../services/Auth.service';
-import { registerSchema } from '../../../utils/schemas/register.schema';
+import { useFormik } from "formik";
+import FormControl from "../../../assets/Forms/FormControl";
+import Input from "../../../assets/Forms/Input";
+import { register } from "../../../services/Auth.service";
+import { registerSchema } from "../../../utils/schemas/register.schema";
 import { useNavigate } from "react-router-dom";
-
-
+import "./../Login/Login.css"
 
 const initialValues = {
-    username: '',
-    email: '',
-    password: '',
-  }
+  username: "",
+  email: "",
+  password: "",
+};
 
 const Register = () => {
-  const navigate =  useNavigate()
+  const navigate = useNavigate();
 
-    const {
-        values, errors, touched, handleChange, handleBlur, isSubmitting, handleSubmit, setSubmitting, setFieldError
-      } = useFormik({
-        initialValues: initialValues,
-        validateOnBlur: true,
-        validateOnChange: false,
-        validationSchema: registerSchema,
-        onSubmit: (values) => {
-          /* setTimeout(() => {    
+  const {
+    values,
+    errors,
+    touched,
+    handleChange,
+    handleBlur,
+    isSubmitting,
+    handleSubmit,
+    setSubmitting,
+    setFieldError,
+  } = useFormik({
+    initialValues: initialValues,
+    validateOnBlur: true,
+    validateOnChange: false,
+    validationSchema: registerSchema,
+    onSubmit: (values) => {
+      /* setTimeout(() => {    
             setSubmitting(false)
           }, 2000); */
 
-      register( { email: values.email, username: values.username, password: values.password} )
+      register({
+        email: values.email,
+        username: values.username,
+        password: values.password,
+      })
         .then(() => {
-          navigate('/login')
+          navigate("/login");
         })
-        .catch(err => {
+        .catch((err) => {
           if (err?.response?.data?.message) {
-            setFieldError('email', err?.response?.data?.message)
+            setFieldError("email", err?.response?.data?.message);
           } else {
-            setFieldError('email', err.message)
+            setFieldError("email", err.message);
           }
-          setSubmitting(false)
-        })}
-      });
+          setSubmitting(false);
+        });
+    },
+  });
 
-
-    return (
-        <div>
-            <h1>Register</h1>
-
-            <form onSubmit={handleSubmit}>
-        <FormControl text="Username" error={touched.username && errors.username} htmlFor="username">
-          <Input
-            id="username"
-            name="username"
-            onChange={handleChange}
-            onBlur={handleBlur}
-            value={values.username}
+  return (
+    <div>
+      <div className="d-flex flex-column align-items-center">
+        <h1>Register</h1>
+        <div className='login-form mt-5'>
+        <form onSubmit={handleSubmit}>
+          <FormControl
+            text="Username"
             error={touched.username && errors.username}
-            placeholder="Your username here..."
-          />
-        </FormControl>
+            htmlFor="username"
+          >
+            <Input
+              id="username"
+              name="username"
+              onChange={handleChange}
+              onBlur={handleBlur}
+              value={values.username}
+              error={touched.username && errors.username}
+              placeholder="Your username here..."
+            />
+          </FormControl>
 
-        <FormControl text="email" error={touched.email && errors.email} htmlFor="email">
-          <Input
-            id="email"
-            name="email"
-            onChange={handleChange}
-            onBlur={handleBlur}
-            value={values.email}
+          <FormControl
+            text="Email"
             error={touched.email && errors.email}
-            placeholder="Your email here..."
-          />
-        </FormControl>
+            htmlFor="email"
+          >
+            <Input
+              id="email"
+              name="email"
+              onChange={handleChange}
+              onBlur={handleBlur}
+              value={values.email}
+              error={touched.email && errors.email}
+              placeholder="Your email here..."
+            />
+          </FormControl>
 
-        <FormControl text="Password" error={touched.password && errors.password} htmlFor="password">
-          <Input
-            id="password"
-            name="password"
-            onChange={handleChange}
-            onBlur={handleBlur}
-            value={values.password}
+          <FormControl
+            text="Password"
             error={touched.password && errors.password}
-            placeholder="Your password here..."
-            type="password"
-          />
-        </FormControl>
+            htmlFor="password"
+          >
+            <Input
+              id="password"
+              name="password"
+              onChange={handleChange}
+              onBlur={handleBlur}
+              value={values.password}
+              error={touched.password && errors.password}
+              placeholder="Your password here..."
+              type="password"
+            />
+          </FormControl>
 
-        <button className="btn btn-primary" type="submit">
-          {isSubmitting
-            ? 'Submitting...'
-            : 'Submit'
-          }
-        </button>
-      </form>
+          <button className="btn btn-primary btn-login" type="submit">
+            {isSubmitting ? "Submitting..." : "Submit"}
+          </button>
+        </form>
         </div>
-    );
+      </div>
+    </div>
+  );
 };
 
 export default Register;

@@ -1,0 +1,12 @@
+.updateprofile-form {
+    --bs-gutter-x: 0 !important;
+}
+
+.updateprofile-form {
+    width: 500px;
+}
+
+.btn-update{
+    background-color: #E7543C !important;
+    color: white !important;
+}

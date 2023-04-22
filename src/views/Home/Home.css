@@ -7,3 +7,17 @@
     border-radius: 10px;
 }
 
+.home-desc{
+    text-align: justify;
+    font-size: 20px;
+}
+
+.home-desc-2{
+    text-align: justify;
+  font-weight: bold;
+    font-size: 28px;
+}
+
+.title{
+    color:   #019891;
+}

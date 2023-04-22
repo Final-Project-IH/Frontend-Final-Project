@@ -17,7 +17,7 @@ const ProductDetailed = ({ product, updateFavorites, currentUser }) => {
   return (
     <div className="d-flex row">
       <div className="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-xs-6"> 
-        <h3 className="productname">{product.product.name}</h3>
+        <h2 className="productname">{product.product.name}</h2>
         <p className="short-desc">{product.product.shortDescription}</p>
         <div className="d-flex justify-content-end">
           <Favorite

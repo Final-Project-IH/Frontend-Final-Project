@@ -24,13 +24,13 @@ const CategoryList = () => {
         {category.map((category) => (
           <div
             key={category._id}
-            className="d-flex justify-content-between m-1"
+            className="d-flex justify-content-between m-1 mr-3"
           >
             <Link
               to={`/products/category/${category._id}/${category.title}`}
               style={{ textDecoration: "none" }}
             >
-             <button type="button" className="btn btn-outline-primary">{category.title}</button>
+             <button type="button" className="btn btn-outline-primary btn-cat">{category.title}</button>
             </Link>
           </div>
         ))}

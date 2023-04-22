@@ -1,5 +1,5 @@
 nav {
-    height: 50px;
+    height: 70px;
     z-index: 9;
 }
 
@@ -13,10 +13,60 @@ nav {
 }
 
 .nav-btn{
-    background-color: #019891;
+    background-color: #E7543C;
     color: white;
     height: 30px;
-    border-radius: 15%;
+    border-radius: 5%;
     margin-left: 10px;
     text-decoration: none;
+    width: 100px;
+    border-color: #F2CB1E;
+}
+
+.profile-btn {
+    color: #E7543C;
+    height: 30px;
+    width: 50px;
+}
+
+
+  @import url('https://fonts.googleapis.com/css2?family=Londrina+Solid:wght@900&display=swap');
+
+
+
+.over-nav{
+    background-color: #019891;
+    height: 40px;
+}
+
+.new-arrivals{
+color:  #F2CB1E;
+font-family: 'Londrina Solid', cursive !important;
+font: bold;
+font-style: oblique;
+}
+
+.stuff{
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: white;
+}
+
+.link{
+    text-decoration: none;
+    color: #E7543C;
+}
+
+.link:hover {
+    color:  #F2CB1E;
+}
+
+.nav-create{
+    background-color: #E7543C;
+    color: white;
+    height: 30px;
+    border-radius: 5%;
+    margin-left: 10px;
+    text-decoration: none;
+    width: 200px;
+    border-color: #F2CB1E;
 }

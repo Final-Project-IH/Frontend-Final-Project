@@ -5,6 +5,10 @@
 }
 
 .btn-outline-primary:hover {
-    background-color:#019891;
+    background-color:#F2CB1E;
     transition: 0.5s;
+}
+
+.btn-cat {
+    width: 100px;
 }

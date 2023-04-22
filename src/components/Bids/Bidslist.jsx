@@ -4,6 +4,7 @@ import BidForm from "./BidForm";
 import "./BidList.css";
 import { useNavigate } from "react-router-dom";
 import MyGifs from "../gifs/gif";
+import LoserGif from "../gifs/LoserGif";
 
 const Bidslist = ({ bids, product, id, currentUser }) => {
   const sortedBids = bids.sort((a, b) => b.offer - a.offer);
@@ -14,15 +15,19 @@ const Bidslist = ({ bids, product, id, currentUser }) => {
     navigate("/");
   };
 
+  const goToWinned = () => {
+    navigate(`/products/${product.id}/winned`);
+  }
+
   return (
     <div>
       {product.status === "Available" ? (
         <div>
+          <div className="card card-active-auct">
           <div className="d-flex justify-content-center countdowntimer mb-0">
             <p className="mr-2">Ends in:</p>
             <CountdownTimer endDate={product.end} />
           </div>
-          <div className="card">
             <h3 className="last-bid-available">Last Bid: </h3>
 
             <h4 className="ml-3 actual-price">{product.initialPrice}€</h4>
@@ -70,8 +75,7 @@ const Bidslist = ({ bids, product, id, currentUser }) => {
       ) : (
         <div>
           <div>
-            {/* <div className="card {lastBids[0]?.bidder?.id === currentUser?.id ? card-winner : card-loser"> */}
-            <div className="card">
+            <div className={`card ${lastBids[0]?.bidder?.id === currentUser?.id ? "card-winner" : "card-loser"}`}>
               <h1 className="m-3 auction-status">This Auction is closed</h1>
               <p className="final-price">Final Price: </p>
               <div>
@@ -86,15 +90,20 @@ const Bidslist = ({ bids, product, id, currentUser }) => {
                     <span>You´ve won this auction!</span>
                   </div>
                   <div>
-                    <button className="btn-check" onClick={goToHome}> 
-                    {/* CAMBIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAARRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR */}
+                    <button className="btn-check" onClick={goToWinned}> 
                       Proceed to pay it...
                     </button>
                   </div>
                 </div>
               ) : (
                 <div>
-                  <div className="d-flex justify-content-center">
+                  <div className="d-flex align-items-center flex-column">
+                  <div className="mb-2">
+                    <LoserGif />
+                  </div>
+                  <div className="loser mb-3">
+                    <span>You´ve lost this auction!</span>
+                  </div>
                     <button className="btn-check" onClick={goToHome}>
                       Check other products...
                     </button>
@@ -118,22 +127,6 @@ const Bidslist = ({ bids, product, id, currentUser }) => {
                   </div>
                 </div>
               )}
-              {/* <p className="mt-3 ml-2">Last Bids: </p>
-
-              {lastBids.map((lastBids) => {
-                return (
-                  <div className="mb-1 d-flex ml-2" key={lastBids._id}>
-                    <img
-                      className="imagebidder m-1"
-                      src={lastBids.bidder.image}
-                    />
-                    <div className="ml-1 mt-1">
-                      {lastBids.bidder.username}: {lastBids.offer}€
-                    </div>
-                  </div>
-                );
-              })} */}
-
               <div>
                 <p className="mt-3 ml-2">Published by: </p>
                 <div className="mb-1 d-flex">
@@ -148,7 +141,6 @@ const Bidslist = ({ bids, product, id, currentUser }) => {
               </div>
             </div>
           </div>
-          {/* {lastBids[0]?.bidder?.id === currentUser?.id ? <div className="Winner"><h4>You have won this auction</h4></div> : null} */}
         </div>
       )}
     </div>

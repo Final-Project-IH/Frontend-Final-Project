@@ -1,0 +1,12 @@
+.login {
+    --bs-gutter-x: 0 !important;
+}
+
+.login-form {
+    width: 500px;
+}
+
+.btn-login{
+    background-color: #E7543C !important;
+    color: white !important;
+}

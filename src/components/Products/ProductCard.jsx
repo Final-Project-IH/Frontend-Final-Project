@@ -37,19 +37,18 @@ const ProductCard = ({ product, auction }) => {
   if (loading) return <p>Cargando...</p>;
 
   return (
-      // <div className="row">
-      <div className="card d-flex flex-column justify-content-center align-items-center m-2" style={{ width: "20rem" }}>
+      <div className="card d-flex flex-column align-items-center mt-3" style={{ width: "20rem" }}>
       <Link
       to={`/products/${auctionData._id}`}
       style={{ textDecoration: "none" }}
     >
       <img
-        className="card-img-top p-3"
-        style={{ width: "300px", height: "350px"}}
+        className="card-img-top"
+        style={{ width: "320px", height: "350px"}}
         src={productData?.image[0]}
         alt="Card image cap"
       ></img></Link>
-        <div className="card-body">
+        <div className="card-body d-flex flex-column align-items-center">
           <h5 className="card-title">{productData?.name}</h5>
           <p>Actual Price: {auctionData.initialPrice} €</p>
         </div>

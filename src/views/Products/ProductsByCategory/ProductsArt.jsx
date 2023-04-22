@@ -27,7 +27,7 @@ const ProductsArt = () => {
         const Availablefilter = prints.filter(
           (prints) => prints.status === "Available"
         );
-        let printsSlice = Availablefilter.slice(0, 2);
+        let printsSlice = Availablefilter.slice(0, 4);
         setLoading(false);
         setPrints(printsSlice);
       })
@@ -40,7 +40,7 @@ const ProductsArt = () => {
         const Availablefilter = photography.filter(
           (photography) => photography.status === "Available"
         );
-        let photographySlice = Availablefilter.slice(0, 2);
+        let photographySlice = Availablefilter.slice(0, 4);
         setLoading(false);
         setPhotography(photographySlice);
       })
@@ -53,7 +53,7 @@ const ProductsArt = () => {
         const Availablefilter = frames.filter(
           (frames) => frames.status === "Available"
         );
-        let framesSlice = Availablefilter.slice(0, 2);
+        let framesSlice = Availablefilter.slice(0, 4);
         setLoading(false);
         setFrames(framesSlice);
       })
@@ -66,7 +66,7 @@ const ProductsArt = () => {
         const Availablefilter = books.filter(
           (books) => books.status === "Available"
         );
-        let booksSlice = Availablefilter.slice(0, 2);
+        let booksSlice = Availablefilter.slice(0, 4);
         setLoading(false);
         setBooks(booksSlice);
       })
@@ -79,7 +79,7 @@ const ProductsArt = () => {
         const Availablefilter = music.filter(
           (music) => music.status === "Available"
         );
-        let musicSlice = Availablefilter.slice(0, 2);
+        let musicSlice = Availablefilter.slice(0, 4);
         setLoading(false);
         setMusic(musicSlice);
       })
@@ -99,10 +99,13 @@ const ProductsArt = () => {
           </li>
         </ol>
       </nav>
-      <h1 className="m-3">Art</h1>
+      <div className="d-flex justify-content-center">
+      <h1 className="m-3 title-cat">Art</h1>
+      </div>
       <div>
+      <hr></hr>
         <div className="d-flex justify-content-between">
-          <h4 className="ml-3">Prints</h4>
+          <h4 className="ml-3 title-sub">Prints</h4>
           <Link to={"prints"} style={{ textDecoration: "none" }}>
             <p>See All</p>
           </Link>
@@ -112,8 +115,9 @@ const ProductsArt = () => {
         ) : (
           <p>Not products yet</p>
         )}
+        <hr></hr>
         <div className="d-flex justify-content-between">
-          <h4>Photography</h4>
+          <h4 className="ml-3 title-sub">Photography</h4>
           <Link to={"photography"} style={{ textDecoration: "none" }}>
             <p>See All</p>
           </Link>
@@ -123,8 +127,9 @@ const ProductsArt = () => {
         ) : (
           <p>Not products yet</p>
         )}
+        <hr></hr>
         <div className="d-flex justify-content-between">
-          <h4>Frames</h4>
+          <h4 className="ml-3 title-sub">Frames</h4>
           <Link to={"frames"} style={{ textDecoration: "none" }}>
             <p>See All</p>
           </Link>
@@ -134,20 +139,21 @@ const ProductsArt = () => {
         ) : (
           <p>Not products yet</p>
         )}
+        <hr></hr>
         <div className="d-flex justify-content-between">
-          <h4>Books</h4>
+          <h4 className="ml-3 title-sub">Books</h4>
           <Link to={"books"} style={{ textDecoration: "none" }}>
             <p>See All</p>
           </Link>
         </div>
-
         {books.length > 0 ? (
           <ProductList auctions={books} />
         ) : (
           <p>Not products yet</p>
         )}
+        <hr></hr>
         <div className="d-flex justify-content-between">
-          <h4>Music</h4>
+          <h4 className="ml-3 title-sub">Music</h4>
           <Link to={"music"} style={{ textDecoration: "none" }}>
             <p>See All</p>
           </Link>
@@ -156,7 +162,7 @@ const ProductsArt = () => {
         {music.length > 0 ? (
           <ProductList auctions={music} />
         ) : (
-          <p>Not products yet</p>
+          <p className="not-products">Not products yet...</p>
         )}
       </div>
     </div>

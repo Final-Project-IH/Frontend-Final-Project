@@ -14,36 +14,39 @@ const FashionAndAccesoriesInitialPage = () => {
 
   useEffect(() => {
     categoryDetailAntiquesFashion(id)
-      .then((product) => {
-        const sortedByPrice = product.sort(
+     .then((product) => {
+        const Availablefilter = product.filter(
+          (product) => product.status === "Available"
+        );
+        const sortedByPrice = Availablefilter.sort(
           (a, b) => a.initialPrice - b.initialPrice
         );
-        let productSlice = sortedByPrice.slice(0, 3);
+        let productSlice = sortedByPrice.slice(0, 4);
         setLoading(false);
         setProductPrice(productSlice);
 
-        const sortedByNewCreation = product.sort(function (a, b) {
+        const sortedByNewCreation = Availablefilter.sort(function (a, b) {
           return new Date(b.start) - new Date(a.start);
         });
 
-        let productSlice2 = sortedByNewCreation.slice(0, 3);
+        let productSlice2 = sortedByNewCreation.slice(0, 4);
         setProductLast(productSlice2);
 
         const currentDate = new Date();
-        const activeAuction = product.filter(
+        const activeAuction = Availablefilter.filter(
           (obj) => new Date(obj.end) > currentDate
         );
 
         const sortedByNearToEnd = activeAuction.sort(function (a, b) {
-          return new Date(b.start) - new Date(a.start);
+          return new Date(a.end) - new Date(b.end);
         });
-        let productSlice3 = sortedByNearToEnd.slice(0, 3);
+        let productSlice3 = sortedByNearToEnd.slice(0, 4);
         setProductNearToEnd(productSlice3);
 
-        const sortedByPopularity = product.sort(
+        const sortedByPopularity = Availablefilter.sort(
           (a, b) => b.favorites.length - a.favorites.length
         );
-        let productSlice4 = sortedByPopularity.slice(0, 3);
+        let productSlice4 = sortedByPopularity.slice(0, 4);
         setproductByPopularity(productSlice4);
       })
       .catch((err) => console.log(err));
@@ -52,26 +55,22 @@ const FashionAndAccesoriesInitialPage = () => {
   return (
     <div>
       <div>
+        <nav aria-label="breadcrumb">
+          <ol className="breadcrumb">
+            <li className="breadcrumb-item">
+              <a href="/">Home</a>
+            </li>
+            <li className="breadcrumb-item">
+              <a href={`/products/category/${id}/antiques`}>Antiques</a>
+            </li>
+            <li className="breadcrumb-item active" aria-current="page">
+              Fashion & Accesories
+            </li>
+          </ol>
+        </nav>
+        <hr></hr>
         <div className="d-flex justify-content-between">
-          <h1>Cheapest</h1>
-          <Link to={"browse-products"} style={{ textDecoration: "none" }}>
-            <p>See All</p>
-          </Link>
-        </div>
-        <ProductList auctions={productbyPrice} />
-      </div>
-      <div>
-        <div className="d-flex justify-content-between">
-          <h1>Latest Creations</h1>
-          <Link to={"browse-products"} style={{ textDecoration: "none" }}>
-            <p>See All</p>
-          </Link>
-        </div>
-        <ProductList auctions={productLast} />
-      </div>
-      <div>
-        <div className="d-flex justify-content-between">
-          <h1>Near to End</h1>
+          <h4 className="ml-3">Near to End</h4>
           <Link to={"browse-products"} style={{ textDecoration: "none" }}>
             <p>See All</p>
           </Link>
@@ -79,13 +78,34 @@ const FashionAndAccesoriesInitialPage = () => {
         <ProductList auctions={productNearToEnd} />
       </div>
       <div>
+        <hr></hr>
         <div className="d-flex justify-content-between">
-          <h1>Most Popular</h1>
+          <h4 className="ml-3">Cheapest</h4>
+          <Link to={"browse-products"} style={{ textDecoration: "none" }}>
+            <p>See All</p>
+          </Link>
+        </div>
+        <ProductList auctions={productbyPrice} />
+      </div>
+      <div>
+        <hr></hr>
+        <div className="d-flex justify-content-between">
+          <h4 className="ml-3">Most Popular</h4>
           <Link to={"browse-products"} style={{ textDecoration: "none" }}>
             <p>See All</p>
           </Link>
         </div>
         <ProductList auctions={productByPopularity} />
+      </div>
+      <div>
+        <hr></hr>
+        <div className="d-flex justify-content-between">
+          <h4 className="ml-3">Latest Creations</h4>
+          <Link to={"browse-products"} style={{ textDecoration: "none" }}>
+            <p>See All</p>
+          </Link>
+        </div>
+        <ProductList auctions={productLast} />
       </div>
     </div>
   );

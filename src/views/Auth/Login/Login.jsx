@@ -8,7 +8,7 @@ import { login as loginService } from "./../../../services/Auth.service";
 import AuthContext from "../../../contexts/Auth.context";
 import { setAccessToken } from "../../../stores/AccessTokenStore";
 import { Navigate } from 'react-router-dom';
-
+import "./Login.css"
 
 const initialValues = {
     username: '',
@@ -48,9 +48,9 @@ const Login = () => {
       });
 
     return (
-        <div>
-            <h1>Login</h1>
-
+        <div className='d-flex flex-column align-items-center'>
+            <h1 className='mt-5'>LOGIN</h1>
+        <div className='login-form mt-5'>
             <form onSubmit={handleSubmit}>
         <FormControl text="Username" error={touched.email && errors.email} htmlFor="username">
           <Input
@@ -77,13 +77,14 @@ const Login = () => {
           />
         </FormControl>
 
-        <button className="btn btn-primary" type="submit">
+        <button className="btn btn-primary btn-login" type="submit">
           {isSubmitting
             ? 'Submitting...'
             : 'Submit'
           }
         </button>
       </form>
+      </div>
         </div>
     );
 };

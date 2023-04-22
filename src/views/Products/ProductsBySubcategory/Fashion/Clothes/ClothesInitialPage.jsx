@@ -15,7 +15,9 @@ const ClothesInitialPage = () => {
   useEffect(() => {
     categoryDetailClothes(id)
       .then((product) => {
-        const Availablefilter = product.filter(product => product.status === "Available")
+        const Availablefilter = product.filter(
+          (product) => product.status === "Available"
+        );
         const sortedByPrice = Availablefilter.sort(
           (a, b) => a.initialPrice - b.initialPrice
         );
@@ -41,7 +43,9 @@ const ClothesInitialPage = () => {
         let productSlice3 = sortedByNearToEnd.slice(0, 4);
         setProductNearToEnd(productSlice3);
 
-        const sortedByPopularity = Availablefilter.sort((a,b) => b.favorites.length - a.favorites.length);
+        const sortedByPopularity = Availablefilter.sort(
+          (a, b) => b.favorites.length - a.favorites.length
+        );
         let productSlice4 = sortedByPopularity.slice(0, 4);
         setproductByPopularity(productSlice4);
       })
@@ -51,26 +55,22 @@ const ClothesInitialPage = () => {
   return (
     <div>
       <div>
+        <nav aria-label="breadcrumb">
+          <ol className="breadcrumb">
+            <li className="breadcrumb-item">
+              <a href="/">Home</a>
+            </li>
+            <li className="breadcrumb-item">
+              <a href={`/products/category/${id}/Fashion`}>Fashion</a>
+            </li>
+            <li className="breadcrumb-item active" aria-current="page">
+              Clothes
+            </li>
+          </ol>
+        </nav>
+        <hr></hr>
         <div className="d-flex justify-content-between">
-          <h1>Cheapest</h1>
-          <Link to={"browse-products"} style={{ textDecoration: "none" }}>
-            <p>See All</p>
-          </Link>
-        </div>
-        <ProductList auctions={productbyPrice} />
-      </div>
-      <div>
-        <div className="d-flex justify-content-between">
-          <h1>Latest Creations</h1>
-          <Link to={"browse-products"} style={{ textDecoration: "none" }}>
-            <p>See All</p>
-          </Link>
-        </div>
-        <ProductList auctions={productLast} />
-      </div>
-      <div>
-        <div className="d-flex justify-content-between">
-          <h1>Near to End</h1>
+          <h4 className="ml-3">Near to End</h4>
           <Link to={"browse-products"} style={{ textDecoration: "none" }}>
             <p>See All</p>
           </Link>
@@ -78,16 +78,94 @@ const ClothesInitialPage = () => {
         <ProductList auctions={productNearToEnd} />
       </div>
       <div>
+        <hr></hr>
         <div className="d-flex justify-content-between">
-          <h1>Most Popular</h1>
+          <h4 className="ml-3">Cheapest</h4>
+          <Link to={"browse-products"} style={{ textDecoration: "none" }}>
+            <p>See All</p>
+          </Link>
+        </div>
+        <ProductList auctions={productbyPrice} />
+      </div>
+      <div>
+        <hr></hr>
+        <div className="d-flex justify-content-between">
+          <h4 className="ml-3">Most Popular</h4>
           <Link to={"browse-products"} style={{ textDecoration: "none" }}>
             <p>See All</p>
           </Link>
         </div>
         <ProductList auctions={productByPopularity} />
       </div>
+      <div>
+        <hr></hr>
+        <div className="d-flex justify-content-between">
+          <h4 className="ml-3">Latest Creations</h4>
+          <Link to={"browse-products"} style={{ textDecoration: "none" }}>
+            <p>See All</p>
+          </Link>
+        </div>
+        <ProductList auctions={productLast} />
+      </div>
     </div>
   );
 };
 
 export default ClothesInitialPage;
+
+
+  // <div>
+    //   <div>
+    //   <nav aria-label="breadcrumb">
+    //     <ol className="breadcrumb">
+    //       <li className="breadcrumb-item">
+    //         <a href="/">Home</a>
+    //       </li>
+    //       <li className="breadcrumb-item">
+    //         <a href={`/products/category/${id}/Fashion`}>Fashion</a>
+    //       </li>
+    //       <li className="breadcrumb-item active" aria-current="page">
+    //         Clothes
+    //       </li>
+    //     </ol>
+    //   </nav>
+    //   <hr></hr>
+    //     <div className="d-flex justify-content-between">
+    //       <h4 className="ml-3">Cheapest</h4>
+    //       <Link to={"browse-products"} style={{ textDecoration: "none" }}>
+    //         <p>See All</p>
+    //       </Link>
+    //     </div>
+    //     <ProductList auctions={productbyPrice} />
+    //   </div>
+    //   <div>
+    //   <hr></hr>
+    //     <div className="d-flex justify-content-between">
+    //       <h4 className="ml-3">Latest Creations</h4>
+    //       <Link to={"browse-products"} style={{ textDecoration: "none" }}>
+    //         <p>See All</p>
+    //       </Link>
+    //     </div>
+    //     <ProductList auctions={productLast} />
+    //   </div>
+    //   <div>
+    //   <hr></hr>
+    //     <div className="d-flex justify-content-between">
+    //       <h4 className="ml-3">Near to End</h4>
+    //       <Link to={"browse-products"} style={{ textDecoration: "none" }}>
+    //         <p>See All</p>
+    //       </Link>
+    //     </div>
+    //     <ProductList auctions={productNearToEnd} />
+    //   </div>
+    //   <div>
+    //    <hr></hr>
+    //     <div className="d-flex justify-content-between">
+    //       <h4 className="ml-3">Most Popular</h4>
+    //       <Link to={"browse-products"} style={{ textDecoration: "none" }}>
+    //         <p>See All</p>
+    //       </Link>
+    //     </div>
+    //     <ProductList auctions={productByPopularity} />
+    //   </div>
+    // </div>

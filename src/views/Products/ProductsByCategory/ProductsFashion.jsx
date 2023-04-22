@@ -70,17 +70,21 @@ const ProductsFashion = () => {
           </li>
         </ol>
       </nav>
-      <h1 className="m-3">Fashion</h1>
+      <div className="d-flex justify-content-center">
+      <h1 className="m-3 title-cat">Fashion</h1>
+      </div>
       <div>
+      <hr></hr>
         <div className="d-flex justify-content-between">
-          <h4 className="ml-3">Clothes</h4>
+          <h4 className="ml-3 title-sub">Clothes</h4>
           <Link to={"clothes"} style={{ textDecoration: "none" }}>
             <p>See All</p>
           </Link>
         </div>
         <ProductList auctions={clothes} />
+        <hr></hr>
         <div className="d-flex justify-content-between">
-          <h4>Accesories</h4>
+          <h4 className="ml-3 title-sub">Accesories</h4>
           <Link to={"accesories"} style={{ textDecoration: "none" }}>
             <p>See All</p>
           </Link>
@@ -90,8 +94,9 @@ const ProductsFashion = () => {
         ) : (
           <p>Not products yet</p>
         )}
+        <hr></hr>
         <div className="d-flex justify-content-between">
-          <h4>Shoes</h4>
+          <h4 className="ml-3 title-sub">Shoes</h4>
           <Link to={"shoes"} style={{ textDecoration: "none" }}>
             <p>See All</p>
           </Link>
@@ -99,7 +104,7 @@ const ProductsFashion = () => {
         {shoes.length > 0 ? (
           <ProductList auctions={shoes} />
         ) : (
-          <p>Not products yet</p>
+          <p className="not-products">Not products yet...</p>
         )}
       </div>
     </div>

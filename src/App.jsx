@@ -8,9 +8,6 @@ import AllProducts from "./views/Products/AllProducts/AllProducts";
 import ProductDetail from "./views/Products/ProductDetail/ProductDetail";
 import CategoryList from "./components/Categories/CategoryListBar";
 import ProductsFashion from "./views/Products/ProductsByCategory/ProductsFashion";
-// import ProductsHome from "./views/Products/ProductsByCategory/productsHome"
-// import ProductsArt from "./views/Products/ProductsByCategory/ProductsArt"
-// import ProductsAntiques from "./views/Products/ProductsByCategory/ProductsAntiques"
 import ClothesAll from "./views/Products/ProductsBySubcategory/Fashion/Clothes/ClothesAll";
 import ClothesInitialPage from "./views/Products/ProductsBySubcategory/Fashion/Clothes/ClothesInitialPage";
 import CreateProduct from "./views/Products/CreateProduct/CreateProduct";
@@ -48,6 +45,9 @@ import BooksInitialPage from "./views/Products/ProductsBySubcategory/Art/Books/B
 import BooksAll from "./views/Products/ProductsBySubcategory/Art/Books/BooksAll";
 import MusicAll from "./views/Products/ProductsBySubcategory/Art/Music/MusicAll";
 import MusicInitialPage from "./views/Products/ProductsBySubcategory/Art/Music/MusicInitialPage";
+import FirstBuyProcess from "./views/Products/BuyProccess/FirstBuyProcess";
+import SecondBuyProcess from "./views/Products/BuyProccess/SecondBuyProcess";
+import FinalBuyProcess from "./views/Products/BuyProccess/FinalBuyProcess";
 
 function App() {
   return (
@@ -195,6 +195,9 @@ function App() {
           <Route path="/new-product" element={<CreateProduct />} />
           <Route path="/users/me" element={<ProfileDetail />} />
           <Route path="/users/me/edit-profile" element={<EditProfile />} />
+          <Route path="products/:id/winned" element={<FirstBuyProcess />} />
+          <Route path="products/:id/winned/payment" element={<SecondBuyProcess />} />
+          <Route path="products/:id/winned/payment/ok" element={<FinalBuyProcess />} />
         </Routes>
       </div>
     </div>

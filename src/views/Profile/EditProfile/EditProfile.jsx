@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom"
 import FormControl from "../../../assets/Forms/FormControl";
 import Input from "../../../assets/Forms/Input";
 import { editTheProfile, getCurrentUser } from "../../../services/User.service"
-
+import "./EditProfile.css"
 
 const EditProfile = () => {
 	const { currentUser, setCurrentUser } = useContext(AuthContext)
@@ -61,8 +61,9 @@ const EditProfile = () => {
 	return (
 		<div>
 		{currentUser ? 
-			<div>
+			<div className='d-flex flex-column align-items-center'>
 			<h1>Update your profile</h1>
+			<div className='updateprofile-form mt-5'>
 			<form onSubmit={handleSubmit}>
 				<FormControl
 					text='Username'
@@ -116,18 +117,21 @@ const EditProfile = () => {
 				</FormControl>
 
 				<button
-					className='btn btn-primary'
+					className='btn btn-primary btn-update'
 					type='submit'
 					disabled={isSubmitting}
+					
 				>
 					{isSubmitting ? "Submitting..." : "Submit"}
 				</button>
 			</form>
 			</div>
+			</div>
 			:
-			<h1></h1>
+			<p>Loading your user info...</p>
 		}
 		</div>
+		
 	)
 }
 

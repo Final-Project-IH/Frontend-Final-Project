@@ -16,8 +16,16 @@ ul {
   width: 150px;
 }
 
+.loser {
+  border: 1px solid rgb(173, 4, 4);
+  background-color: rgb(173, 4, 4);
+  color: white;
+  text-align: center;
+  width: 150px;
+}
+
 .auction-status {
-  border: 1px solid #019891;
+  border: 1px solid #F2CB1E;
   text-align: center;
 }
 
@@ -47,7 +55,18 @@ ul {
     box-shadow: 0px 0px 22px -6px rgba(240, 4, 4, 0.911) !important;
 }
 
+.card-winner {
+  box-shadow: 0px 0px 22px 3px rgba(7, 133, 16, 0.804) !important;
+}
+
 .last-bid-available{
     margin-top: 20px;
 }
 
+.card-winner, .card-loser{
+  margin-top: 120px;
+}
+
+.card-active-auct{
+  margin-top: 80px;
+}

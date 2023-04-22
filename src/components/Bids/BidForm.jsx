@@ -90,7 +90,7 @@ const BidForm = ({ lastOffer, id }) => {
           />
         </FormControl>
         <button
-          className="btn btn-primary btn-bid "
+          className="btn-bid "
           type="submit"
           disabled={isSubmitting}
         >

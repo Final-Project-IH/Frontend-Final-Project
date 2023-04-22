@@ -40,7 +40,7 @@ const ProductDetail = () => {
       .catch((err) => console.log(err));
   }, [currentUser]);
 
-  useInterval(fetchProductDetail, 50000); //CAMBIAR A 5000(5SEC)llama a la Api cada 5 segundos para ver si hay cambios en la puja
+  useInterval(fetchProductDetail, 1000); 
 
 
 

@@ -2,13 +2,11 @@ import React, { useEffect, useState } from "react";
 import { categoryDetailClothes } from "../../../../../services/CategoriesService";
 import { useParams } from "react-router";
 import ProductList from "../../../../../components/Products/ProductList";
+import "./../../productsBySubcat.css"
 
 const ClothesAll = () => {
   const [product, setProduct] = useState([]);
-  // const [sortedByPrice, setSortedByPrice] = useState(false);
-  // const [sortedByNewest, setSortedByNewest] = useState(false);
   const [filterByActive, setFilterByActive] = useState(false);
-  // const [sortedByLowerPrice, setsortedByLowerPrice] = useState(false);
   const [loading, setLoading] = useState(true);
   const { id } = useParams();
 
@@ -58,10 +56,9 @@ const ClothesAll = () => {
  
 
   return (
-
     <div>
     <div className="dropdown">
-  <button className="btn btn-secondary dropdown-toggle m-3" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+  <button className="btn btn-secondary dropdown-toggle m-3 mb-4 ml-4 btn-filter" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
     Let´s Filter
   </button>
   <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">

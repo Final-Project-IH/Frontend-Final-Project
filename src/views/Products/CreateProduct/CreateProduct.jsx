@@ -5,12 +5,16 @@ import Input from "../../../assets/Forms/Input";
 import { createProduct } from "../../../services/ProductService";
 import { productSchema } from "../../../utils/schemas/product.schema";
 import Select from "../../../assets/Forms/Select";
+import { Navigate, useNavigate } from 'react-router-dom';
 import {
   shipmentOptions,
   stateOptions,
   categoryOptions,
   subcategoryOptions,
 } from "./categoriesData";
+import "./CreateProduct.css"
+
+
 const now = new Date()
 const initialValues = {
   name: "",
@@ -28,6 +32,8 @@ const initialValues = {
 
 const CreateProduct = () => {
   const pageOne = true;
+  const navigate = useNavigate();
+
 
   const {
     values,
@@ -65,7 +71,7 @@ const CreateProduct = () => {
 
       createProduct(formData)
         .then((response) => {
-          console.log("******* ", response);
+          navigate("/")
         })
         .catch((err) => {
           console.log(err);
@@ -78,9 +84,9 @@ const CreateProduct = () => {
   let today = new Date().toISOString().split("T")[0];
 
   return (
-    <div>
-      <h1>Create Product</h1>
-      <div>
+    <div className='d-flex flex-column align-items-center'>
+      <h1 className='mt-5'>Create a new Auction</h1>
+      <div className='login-form mt-3'>
         <form onSubmit={handleSubmit} encType="multipart/form-data">
           <FormControl
             text="Name"
@@ -130,7 +136,7 @@ const CreateProduct = () => {
             />
           </FormControl>
           <FormControl
-            text="Image"
+            text="Image: "
             error={touched.image && errors.image}
             htmlFor="image"
           >
@@ -161,7 +167,7 @@ const CreateProduct = () => {
             />
           </FormControl>
           <FormControl
-            text="state"
+            text="State:"
             error={touched.state && errors.state}
             htmlFor="state"
           >
@@ -178,7 +184,7 @@ const CreateProduct = () => {
           </FormControl>
 
           <FormControl
-            text="Shipment"
+            text="Shipment:"
             error={touched.shipment && errors.shipment}
             htmlFor="shipment"
           >
@@ -194,7 +200,7 @@ const CreateProduct = () => {
             />
           </FormControl>
           <FormControl
-            text="category"
+            text="Category:"
             error={touched.category && errors.category}
             htmlFor="category"
           >
@@ -211,7 +217,7 @@ const CreateProduct = () => {
           </FormControl>
 
           <FormControl
-            text="subcategories"
+            text="Subcategory: "
             error={touched.subcategories && errors.subcategories}
             htmlFor="subcategories"
           >
@@ -227,25 +233,8 @@ const CreateProduct = () => {
               options={subcategoryOptions[values.category]}
             />
           </FormControl>
-
-          {/* <FormControl
-            text="start"
-            error={touched.start && errors.start}
-            htmlFor="start"
-          >
-            <Input
-              id="start"
-              name="start"
-              type="date"
-              onChange={handleChange}
-              onBlur={handleBlur}
-              value={values.start}
-              error={touched.start && errors.start}
-              placeholder="Enter product start..."
-            />
-          </FormControl> */}
           <FormControl
-            text="end"
+            text="End Date: "
             error={touched.end && errors.end}
             htmlFor="end"
           >
@@ -262,7 +251,7 @@ const CreateProduct = () => {
             />
           </FormControl>
           <button
-            className="btn btn-primary"
+            className="btn btn-primary btn-login"
             type="submit"
             disabled={isSubmitting}
           >

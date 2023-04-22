@@ -1,0 +1,13 @@
+.btn-filter {
+width: 150px;
+height: 56px;
+background: #019891;
+border-radius: 80px;
+border-color: #019891;
+}
+
+
+.filter-title{
+    font-family: 'Lobster', cursive !important;
+    color:  #F2CB1E;
+}

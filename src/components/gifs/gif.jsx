@@ -4,7 +4,7 @@ import "./gif.css"
 const MyGifs = () => {
     return (
         <div>
-            <img src={myGif} alt="GIF cargado en React" />
+            <img className="gif" src={myGif} alt="GIF cargado en React" />
         </div>
     );
 };

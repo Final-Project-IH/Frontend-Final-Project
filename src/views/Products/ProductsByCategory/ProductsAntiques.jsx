@@ -65,14 +65,17 @@ const ProductsAntiques = () => {
             <a href="/">Home</a>
           </li>
           <li className="breadcrumb-item active" aria-current="page">
-            Fashion
+            Antiques
           </li>
         </ol>
       </nav>
-      <h1 className="m-3">Antiques</h1>
+      <div className="d-flex justify-content-center">
+      <h1 className="m-3 title-cat">Antiques</h1>
+      </div>
       <div>
+      <hr></hr>
         <div className="d-flex justify-content-between">
-          <h4 className="ml-3">Home & Decoration</h4>
+          <h4 className="ml-3 title-sub">Home & Decoration</h4>
           <Link to={"home-decoration"} style={{ textDecoration: "none" }}>
             <p>See All</p>
           </Link>
@@ -82,8 +85,9 @@ const ProductsAntiques = () => {
         ) : (
           <p>Not products yet</p>
         )}
+        <hr></hr>
         <div className="d-flex justify-content-between">
-          <h4>Art & Frames</h4>
+          <h4 className="ml-3 title-sub">Art & Frames</h4>
           <Link to={"art-frames"} style={{ textDecoration: "none" }}>
             <p>See All</p>
           </Link>
@@ -93,8 +97,9 @@ const ProductsAntiques = () => {
         ) : (
           <p>Not products yet</p>
         )}
+        <hr></hr>
         <div className="d-flex justify-content-between">
-          <h4>Fashion & Accesories</h4>
+          <h4 className="ml-3 title-sub">Fashion & Accesories</h4>
           <Link to={"fashion-accesories"} style={{ textDecoration: "none" }}>
             <p>See All</p>
           </Link>
@@ -102,7 +107,7 @@ const ProductsAntiques = () => {
         {fashion.length > 0 ? (
           <ProductList auctions={fashion} />
         ) : (
-          <p>Not products yet</p>
+          <p className="not-products">Not products yet...</p>
         )}
       </div>
     </div>

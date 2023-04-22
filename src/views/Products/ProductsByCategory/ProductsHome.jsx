@@ -69,10 +69,13 @@ const ProductsHome = () => {
           </li>
         </ol>
       </nav>
-       <h1 className="m-3">Home</h1>
+      <div className="d-flex justify-content-center">
+       <h1 className="m-3 title-cat">Home</h1>
+      </div>
       <div>
+      <hr></hr>
         <div className="d-flex justify-content-between">
-          <h4 className="ml-3">Decoration</h4>
+          <h4 className="ml-3 title-sub">Decoration</h4>
           <Link to={"decoration"} style={{ textDecoration: "none" }}>
             <p>See All</p>
           </Link>
@@ -82,8 +85,9 @@ const ProductsHome = () => {
         ) : (
           <p>Not products yet</p>
         )}
+        <hr></hr>
         <div className="d-flex justify-content-between">
-          <h4>Furniture</h4>
+          <h4 className="ml-3 title-sub">Furniture</h4>
           <Link to={"furniture"} style={{ textDecoration: "none" }}>
             <p>See All</p>
           </Link>
@@ -93,8 +97,9 @@ const ProductsHome = () => {
         ) : (
           <p>Not products yet</p>
         )}
+        <hr></hr>
         <div className="d-flex justify-content-between">
-          <h4>Kitchenware</h4>
+          <h4 className="ml-3 title-sub">Kitchenware</h4>
           <Link to={"kitchenware"} style={{ textDecoration: "none" }}>
             <p>See All</p>
           </Link>
@@ -102,7 +107,7 @@ const ProductsHome = () => {
         {kitchenware.length > 0 ? (
           <ProductList auctions={kitchenware} />
         ) : (
-          <p>Not products yet</p>
+          <p className="not-products">Not products yet...</p>
         )}
       </div>
     </div>
