@@ -1,4 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,400;0,500;1,100&display=swap');
+
 
 
 html,
@@ -9,5 +10,5 @@ body {
 }
 
 body * {
-  font-family: 'Pacifico', cursive !important;
+  font-family: 'Montserrat', sans-serif !important;
 }
