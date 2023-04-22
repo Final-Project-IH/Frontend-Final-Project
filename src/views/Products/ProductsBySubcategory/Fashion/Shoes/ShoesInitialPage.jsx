@@ -11,7 +11,7 @@ const ShoesInitialPage = () => {
   const [productByPopularity, setproductByPopularity] = useState([]);
   const [loading, setLoading] = useState(true);
   const { id } = useParams();
-  
+
     useEffect(() => {
         categoryDetailShoes(id)
         .then((product) => {
@@ -44,7 +44,7 @@ const ShoesInitialPage = () => {
           setProductNearToEnd(productSlice3);
   
           const sortedByPopularity = Availablefilter.sort(
-            (a, b) => b.favorites.length - a.favorites.length
+            (a, b) => b.favorites?.length - a.favorites?.length
           );
           let productSlice4 = sortedByPopularity.slice(0, 4);
           setproductByPopularity(productSlice4);
@@ -108,7 +108,7 @@ const ShoesInitialPage = () => {
           <ProductList auctions={productLast} />
         </div>
       </div>
-    );
+  );
   };
 
 

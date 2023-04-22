@@ -95,7 +95,7 @@ const ProductsAntiques = () => {
         {art.length > 0 ? (
           <ProductList auctions={art} />
         ) : (
-          <p>Not products yet</p>
+          <p className="ml-3">Not products yet</p>
         )}
         <hr></hr>
         <div className="d-flex justify-content-between">

@@ -2,7 +2,8 @@ import React, { useCallback, useEffect, useState } from "react";
 import dayjs from "dayjs";
 import { Link } from "react-router-dom";
 import CountdownTimer from "../CountDownTimer/CountDownTimer";
-import { changeStatus } from "../../services/ProductService";
+// import { changeStatus } from "../../services/ProductService";
+import { changeStatus } from "../../services/ProductService"
 import "./ProductCard.css"
 
 const ProductCard = ({ product, auction }) => {
@@ -12,7 +13,8 @@ const ProductCard = ({ product, auction }) => {
   const [loading, setLoading] = useState(true);
 
   const now = new Date();
-  const endDate = new Date(productData?.endDate);
+  const endDate = new Date(productData?.end);
+
 
   const handleAuctionState = useCallback(() => {
     if (auction.status === "Available") {
@@ -26,6 +28,7 @@ const ProductCard = ({ product, auction }) => {
     }
   }, []);
 
+
   useEffect(() => {
     if (endDate.getTime() < now.getTime()) {
       handleAuctionState();
@@ -33,11 +36,12 @@ const ProductCard = ({ product, auction }) => {
       setLoading(false);
     }
   }, []);
+  
 
   if (loading) return <p>Cargando...</p>;
 
   return (
-      <div className="card d-flex flex-column align-items-center mt-3" style={{ width: "20rem" }}>
+      <div className="card product-card d-flex flex-column align-items-center mt-3" style={{ width: "20rem" }}>
       <Link
       to={`/products/${auctionData._id}`}
       style={{ textDecoration: "none" }}
@@ -49,7 +53,7 @@ const ProductCard = ({ product, auction }) => {
         alt="Card image cap"
       ></img></Link>
         <div className="card-body d-flex flex-column align-items-center">
-          <h5 className="card-title">{productData?.name}</h5>
+          <h5 className="card-title product-name">{productData?.name}</h5>
           <p>Actual Price: {auctionData.initialPrice} €</p>
         </div>
         <ul className="list-group list-group-flush">

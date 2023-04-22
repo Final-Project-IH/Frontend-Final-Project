@@ -14,4 +14,14 @@
 .title-cat, .title-sub{
     font-family: 'Lobster', cursive !important;
     color:  #F2CB1E;
+    -webkit-text-stroke: 0.3px black;
+   
+}
+
+.title-sub{
+    font-size: 40px;
+}
+
+.title-cat{
+    font-size: 60px;
 }

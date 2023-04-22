@@ -17,7 +17,6 @@ function CountdownTimer({onEndFn, endDate, status }) {
       });
     } else {
       if (status === "Available") {
-      
         setTimeRemaining(false)
         onEndFn()
       }
@@ -30,7 +29,6 @@ function CountdownTimer({onEndFn, endDate, status }) {
       const intervalId = setInterval(() => {
         calculateTimeRemaining();
       }, 1);
-
       return () => clearInterval(intervalId);
     }
   }, []);

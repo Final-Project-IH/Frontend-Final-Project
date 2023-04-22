@@ -15,42 +15,42 @@ const FashionAndAccesoriesInitialPage = () => {
   useEffect(() => {
     categoryDetailAntiquesFashion(id)
      .then((product) => {
-        const Availablefilter = product.filter(
-          (product) => product.status === "Available"
-        );
-        const sortedByPrice = Availablefilter.sort(
-          (a, b) => a.initialPrice - b.initialPrice
-        );
-        let productSlice = sortedByPrice.slice(0, 4);
-        setLoading(false);
-        setProductPrice(productSlice);
+      const Availablefilter = product.filter(
+        (product) => product.status === "Available"
+      );
+      const sortedByPrice = Availablefilter.sort(
+        (a, b) => a.initialPrice - b.initialPrice
+      );
+      let productSlice = sortedByPrice.slice(0, 4);
+      setLoading(false);
+      setProductPrice(productSlice);
 
-        const sortedByNewCreation = Availablefilter.sort(function (a, b) {
-          return new Date(b.start) - new Date(a.start);
-        });
+      const sortedByNewCreation = Availablefilter.sort(function (a, b) {
+        return new Date(b.start) - new Date(a.start);
+      });
 
-        let productSlice2 = sortedByNewCreation.slice(0, 4);
-        setProductLast(productSlice2);
+      let productSlice2 = sortedByNewCreation.slice(0, 4);
+      setProductLast(productSlice2);
 
-        const currentDate = new Date();
-        const activeAuction = Availablefilter.filter(
-          (obj) => new Date(obj.end) > currentDate
-        );
+      const currentDate = new Date();
+      const activeAuction = Availablefilter.filter(
+        (obj) => new Date(obj.end) > currentDate
+      );
 
-        const sortedByNearToEnd = activeAuction.sort(function (a, b) {
-          return new Date(a.end) - new Date(b.end);
-        });
-        let productSlice3 = sortedByNearToEnd.slice(0, 4);
-        setProductNearToEnd(productSlice3);
+      const sortedByNearToEnd = activeAuction.sort(function (a, b) {
+        return new Date(a.end) - new Date(b.end);
+      });
+      let productSlice3 = sortedByNearToEnd.slice(0, 4);
+      setProductNearToEnd(productSlice3);
 
-        const sortedByPopularity = Availablefilter.sort(
-          (a, b) => b.favorites.length - a.favorites.length
-        );
-        let productSlice4 = sortedByPopularity.slice(0, 4);
-        setproductByPopularity(productSlice4);
-      })
-      .catch((err) => console.log(err));
-  }, []);
+      const sortedByPopularity = Availablefilter.sort(
+        (a, b) => b.favorites?.length - a.favorites?.length
+      );
+      let productSlice4 = sortedByPopularity.slice(0, 4);
+      setproductByPopularity(productSlice4);
+    })
+    .catch((err) => console.log(err));
+}, []);
 
   return (
     <div>

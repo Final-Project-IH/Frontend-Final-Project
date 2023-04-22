@@ -44,14 +44,14 @@ const PhotographyInitialPage = () => {
           setProductNearToEnd(productSlice3);
   
           const sortedByPopularity = Availablefilter.sort(
-            (a, b) => b.favorites.length - a.favorites.length
+            (a, b) => b.favorites?.length - a.favorites?.length
           );
           let productSlice4 = sortedByPopularity.slice(0, 4);
           setproductByPopularity(productSlice4);
         })
         .catch((err) => console.log(err));
     }, []);
-  
+    
     return (
       <div>
         <div>

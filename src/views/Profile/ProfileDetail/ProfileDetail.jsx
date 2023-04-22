@@ -92,28 +92,40 @@ const ProfileDetail = () => {
           </div>
           <div>
             <hr></hr>
-            <div className="d-flex justify-content-between">
-              <h4 className="ml-3">My Auctions</h4>
+            <div className="d-flex justify-content-between m-4">
+              <h4 className="mt-4 ml-4">My Auctions</h4>
             </div>
-            <ProductList auctions={ownAuctions} />
+            {ownAuctions.length > 0 ? (
+              <ProductList auctions={ownAuctions} />
+            ) : (
+              <p className="mb-4 ml-4">You haven´t Auctions yet.</p>
+            )}
             <hr></hr>
             <div className="d-flex justify-content-between m-4">
-              <h3 className="mt-4 ml-4">My Bids</h3>
+              <h4 className="mt-4 ml-4">My Bids</h4>
             </div>
-            <ProductList auctions={myBidsAuctions} />
+            {myBidsAuctions.length > 0 ? (
+              <ProductList auctions={myBidsAuctions} />
+            ) : (
+              <p className="mb-4 ml-4">You haven´t Bids yet.</p>
+            )}
             <hr></hr>
             <div className="d-flex justify-content-between m-4">
-              <h3 className="mt-4 ml-4">My Favs</h3>
+              <h4 className="mt-4 ml-4">My Favs</h4>
             </div>
-            <ProductList auctions={myFavs} />
+            {myFavs.length > 0 ? (
+              <ProductList auctions={myFavs} />
+            ) : (
+              <p className="mb-4 ml-4">You haven´t Favs yet.</p>
+            )}
             <hr></hr>
             <div className="d-flex justify-content-between m-4">
-              <h3 className="mt-4 ml-4">My Winned Auctions</h3>
+              <h4 className="mt-4 ml-4">My Winned Auctions</h4>
             </div>
             {myWinnedAuct.length > 0 ? (
               <ProductList auctions={myWinnedAuct} />
             ) : (
-              <p className="mb-4">No auctions won yet.</p>
+              <p className="mb-4 ml-4">No auctions won yet.</p>
             )}
           </div>
         </div>

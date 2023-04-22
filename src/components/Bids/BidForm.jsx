@@ -69,7 +69,6 @@ const BidForm = ({ lastOffer, id }) => {
       setSubmitting(false);
     },
   });
-  console.log(ModalisOpen);
   return (
     <div className="d-flex">
       <form onSubmit={handleSubmit}>

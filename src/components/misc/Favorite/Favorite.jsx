@@ -3,7 +3,6 @@ import AuthContext from "../../../contexts/Auth.context";
 
 const Favorite = ({ auctionId, updateFavorites }) => {
   const { currentUser, manageFavorites } = useContext(AuthContext);
-  console.log('currentUser', currentUser)
 
   const isFavorited = currentUser?.favorites.find(
     (favorite) => favorite.auction._id === auctionId
