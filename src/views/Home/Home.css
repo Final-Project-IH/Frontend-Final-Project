@@ -19,5 +19,7 @@
 }
 
 .title{
-    color:   #019891;
+    color:  #F2CB1E;
+    text-align: center;
+    -webkit-text-stroke: 0.3px black;
 }
