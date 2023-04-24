@@ -31,7 +31,7 @@ const Bidslist = ({ bids, product, id, currentUser }) => {
             <h3 className="last-bid-available">Last Bid: </h3>
 
             <h4 className="ml-3 actual-price">{product.initialPrice}€</h4>
-            {lastBids[0]?.bidder?.id === currentUser?.id ? (
+            {currentUser && lastBids[0]?.bidder?.id === currentUser?.id ? (
               <div className="d-flex justify-content-center">
                 <div className="winning">
                   <span>You are winning!</span>
