@@ -5,6 +5,7 @@ import CountdownTimer from "../CountDownTimer/CountDownTimer";
 // import { changeStatus } from "../../services/ProductService";
 import { changeStatus } from "../../services/ProductService"
 import "./ProductCard.css"
+// import useInterval from "../../hooks/useInterval";
 
 const ProductCard = ({ product, auction }) => {
   const [productData, setProductData] = useState(product);
@@ -36,6 +37,7 @@ const ProductCard = ({ product, auction }) => {
       setLoading(false);
     }
   }, []);
+  
   
 
   if (loading) return <p>Cargando...</p>;

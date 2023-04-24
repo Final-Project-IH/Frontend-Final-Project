@@ -30,7 +30,7 @@ const ProductDetailed = ({ product, updateFavorites, currentUser }) => {
           items={images}
           showPlayButton={false}
           thumbnailPosition={"left"}
-          showFullscreenButton={false}
+          showFullscreenButton={true}
         />
       </div>
       <div className="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-xs-6">
