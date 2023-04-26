@@ -8,7 +8,6 @@ import Bidslist from "../../../components/Bids/Bidslist";
 import ProductDetailed from "../../../components/Products/ProductDetail";
 import useInterval from "../../../hooks/useInterval";
 import AuthContext from "../../../contexts/Auth.context";
-import "./ProductDetailview.css";
 import BidslistOwner from "../../../components/Bids/BidListOwner";
 import ReactModal from 'react-modal';
 

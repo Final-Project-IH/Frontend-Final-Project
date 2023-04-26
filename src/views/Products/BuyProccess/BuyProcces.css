@@ -158,3 +158,31 @@ body {
     background-color: #019891 !important;
     text-decoration: none;
 }
+
+@media (max-width: 500px) {
+    .image-winned-product {
+        width: 150px !important;
+        height: 150px !important;
+    }
+
+    .name-winned-product{
+        font-size: 20px;
+    }
+
+    .short-desc-winned-product{
+        font-size: 10px;
+    }
+
+    .item-desc{
+        margin-top: 0 !important;
+    }
+
+    .continue{
+        font-size: 30px;
+    }
+
+    .final-advice{
+        font-size: 20px;
+        margin-left: 15px;
+    }
+}

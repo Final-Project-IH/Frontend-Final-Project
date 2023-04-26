@@ -59,21 +59,23 @@ const ProductsHome = () => {
   return (
     <div>
       <CategoryList />
-   <nav aria-label="breadcrumb">
-        <ol className="breadcrumb">
-          <li className="breadcrumb-item">
-            <a href="/">Home</a>
-          </li>
-          <li className="breadcrumb-item active" aria-current="page">
-            Home
-          </li>
-        </ol>
-      </nav>
+      <div className="breadcrumb-div">
+        <nav aria-label="breadcrumb">
+          <ol className="breadcrumb">
+            <li className="breadcrumb-item">
+              <a href="/">Home</a>
+            </li>
+            <li className="breadcrumb-item active" aria-current="page">
+              Home
+            </li>
+          </ol>
+        </nav>
+      </div>
       <div className="d-flex justify-content-center">
-       <h1 className="m-3 title-cat">Home</h1>
+        <h1 className="m-3 title-cat">Home</h1>
       </div>
       <div>
-      <hr></hr>
+        <hr></hr>
         <div className="d-flex justify-content-between">
           <h4 className="ml-3 title-sub">Decoration</h4>
           <Link to={"decoration"} style={{ textDecoration: "none" }}>

@@ -30,6 +30,7 @@ const Home = () => {
             showPlayButton={true}
             autoPlay={true}
             slideInterval={3500}
+            className="image-home"
           />
         </div>
         <div className="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-xs-12 mt-5">
@@ -41,9 +42,9 @@ const Home = () => {
             the world, ranging from action figures from your favorite movies and
             TV shows, to rare comics, original movie posters, vintage toys, and
             much more.
-          </p>
-          <p className="home-desc">
-          Browse through a wide variety of collectible items, set your own prices, and participate in exciting real-time auctions.
+            <br></br>
+            <br></br>
+            Browse through a wide variety of collectible items, set your own prices, and participate in exciting real-time auctions.
           </p>
           <p className="home-desc-2">
           Join our community today and start discovering unique treasures in our thrilling auctions!

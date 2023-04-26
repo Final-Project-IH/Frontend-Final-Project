@@ -25,3 +25,14 @@
 .title-cat{
     font-size: 60px;
 }
+
+@media (max-width: 500px) {
+    .breadcrumb{
+        text-align: center;
+    }
+    .breadcrumb-div{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}

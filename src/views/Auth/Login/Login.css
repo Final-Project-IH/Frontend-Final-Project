@@ -10,3 +10,9 @@
     background-color: #E7543C !important;
     color: white !important;
 }
+
+@media (max-width: 500px) {
+    .login-form {
+        width: 200px !important;
+    }
+}

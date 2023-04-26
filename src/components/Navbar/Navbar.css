@@ -68,3 +68,59 @@ font-style: oblique;
     width: 200px;
     border-color: #F2CB1E;
 }
+
+@media (max-width: 500px) {
+    .new-arrivals{
+        font-size: 17px;
+        margin-top: 10px;
+    }
+
+    .stuff{
+        font-size: 11px;
+        margin-top: 10px !important;
+    }
+
+    .navbar {
+        height: 150px;
+        display: flex;
+    }
+
+    .logo-nav{
+        display: flex;
+       align-items: center;
+       justify-content: center;
+        width: 100%;
+    }
+
+    .logo{
+        margin-left: 5px !important;
+    }
+
+    .nav-buttons-nolog{
+        justify-content: space-between !important;
+        width: 100%;
+    }
+
+    .logged-items{
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 100%;    
+    }
+
+    .nav-create{
+        font-size: 10px;
+        width: 120px;
+    }
+
+    .nav-logout{
+        font-size: 10px;
+        width: 100px;
+    }
+
+    .notifications {
+        text-align: center;
+        margin-left: 50px !important;
+    }
+
+  }

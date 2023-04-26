@@ -1,0 +1,6 @@
+@media (max-width: 500px) {
+    .listcards{
+     margin-left: 0 !important;
+     padding-left: 0 !important;
+    }
+ }

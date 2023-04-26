@@ -15,8 +15,8 @@ const ProductDetailed = ({ product, updateFavorites, currentUser }) => {
   });
 
   return (
-    <div className="d-flex row">
-      <div className="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-xs-6"> 
+    <div className="d-flex row row-product">
+      <div className="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-xs-6 column-product"> 
         <h2 className="productname">{product.product.name}</h2>
         <p className="short-desc">{product.product.shortDescription}</p>
         <div className="d-flex justify-content-end">
@@ -33,7 +33,7 @@ const ProductDetailed = ({ product, updateFavorites, currentUser }) => {
           showFullscreenButton={true}
         />
       </div>
-      <div className="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-xs-6">
+      <div className="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-xs-6 column-product">
         <p className="product-desc-detail">{product.product.description}</p>
       </div>
     </div>

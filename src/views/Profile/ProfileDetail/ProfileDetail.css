@@ -18,3 +18,9 @@
     
 }
 
+@media (max-width: 500px) {
+   .profile-info{
+    margin-left: 10px !important;
+   }
+}
+

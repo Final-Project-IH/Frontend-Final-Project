@@ -23,3 +23,18 @@
     text-align: center;
     -webkit-text-stroke: 0.3px black;
 }
+
+@media (max-width: 500px) {
+    .home-desc {
+        font-size: 15px;
+    }
+
+    .home-desc-2{
+        font-size: 18px;
+    }
+    
+    .title{
+        margin-top: 0 !important;
+    }
+
+}

@@ -40,14 +40,14 @@ const FirstBuyProcess = () => {
             </h1>
           </div>
           <div className="d-flex justify-content-center mt-4">
-            <img src={product?.product?.image} style={{ width: "400px" }} />
-            <div className="d-flex flex-column align-items-center mt-4">
-              <h4 className="ml-5">{product?.product?.name}</h4>
-              <h4 className="ml-5">{product?.product?.shortDescription}</h4>
+            <img className="image-winned-product"src={product?.product?.image} style={{ width: "400px" }} />
+            <div className="d-flex flex-column align-items-center mt-4 item-desc">
+              <h4 className="ml-5 name-winned-product">{product?.product?.name}</h4>
+              <h4 className="ml-5 short-desc-winned-product">{product?.product?.shortDescription}</h4>
             </div>
           </div>
           <div className="d-flex flex-column align-items-center">
-            <h1 className="mt-5">Continue with the payment process</h1>
+            <h1 className="mt-5 continue">Continue with the payment process</h1>
             <button className="btn-check mt-5" onClick={goToSecondStep}>
               Continue
             </button>

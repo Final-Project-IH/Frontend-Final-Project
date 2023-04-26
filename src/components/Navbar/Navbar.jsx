@@ -36,31 +36,36 @@ const Navbar = () => {
         <h3 className="new-arrivals">NEW ARRIVALS</h3>
       </div>
       <nav className="navbar navbar-light shadow-sm">
+      <div className="logo-nav">
         <Link to="/">
           <img
-            className="ml-5"
+            className="ml-5 logo"
             src={logo}
             style={{ width: "150px" }}
             alt="Bootstrap"
           />
         </Link>
+      </div>
 
-        <div className="d-flex justify-content-end">
+        <div className="d-flex justify-content-end nav-buttons-nolog">
           {!currentUser && (
             <>
-              <button className="nav-btn" onClick={goToRegister}>
+              <button className="nav-btn nav-btn-register" onClick={goToRegister}>
                 Register
               </button>
-              <button className="nav-btn" onClick={goToLogin}>
+              <button className="nav-btn nav-btn-login" onClick={goToLogin}>
                 Login
               </button>
             </>
           )}
           {currentUser && (
-            <>
+            <div className="d-flex logged-items">
+              <div className="notifications">
               <span className="navbar-brand mr-5">
                 <Notification />
               </span>
+              </div>
+              <div>
               <Link to="/users/me" className="link ml-2">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -77,10 +82,11 @@ const Navbar = () => {
               <button className="nav-create mt-2" onClick={goToCreate}>
                 Create a new Auction
               </button>
-              <button className="nav-btn mt-2" onClick={logoutUser}>
+              <button className="nav-btn nav-logout mt-2" onClick={logoutUser}>
                 Logout
               </button>
-            </>
+              </div>
+            </div>
           )}
         </div>
       </nav>

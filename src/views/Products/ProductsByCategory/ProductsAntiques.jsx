@@ -59,6 +59,7 @@ const ProductsAntiques = () => {
   return (
     <div>
       <CategoryList />
+      <div className="breadcrumb-div">
       <nav aria-label="breadcrumb">
         <ol className="breadcrumb">
           <li className="breadcrumb-item">
@@ -69,6 +70,7 @@ const ProductsAntiques = () => {
           </li>
         </ol>
       </nav>
+      </div>
       <div className="d-flex justify-content-center">
       <h1 className="m-3 title-cat">Antiques</h1>
       </div>

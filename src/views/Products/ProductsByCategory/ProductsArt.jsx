@@ -89,21 +89,23 @@ const ProductsArt = () => {
   return (
     <div>
       <CategoryList />
-     <nav aria-label="breadcrumb">
-        <ol className="breadcrumb">
-          <li className="breadcrumb-item">
-            <a href="/">Home</a>
-          </li>
-          <li className="breadcrumb-item active" aria-current="page">
-            Art
-          </li>
-        </ol>
-      </nav>
+      <div className="breadcrumb-div">
+        <nav aria-label="breadcrumb">
+          <ol className="breadcrumb">
+            <li className="breadcrumb-item">
+              <a href="/">Home</a>
+            </li>
+            <li className="breadcrumb-item active" aria-current="page">
+              Art
+            </li>
+          </ol>
+        </nav>
+      </div>
       <div className="d-flex justify-content-center">
-      <h1 className="m-3 title-cat">Art</h1>
+        <h1 className="m-3 title-cat">Art</h1>
       </div>
       <div>
-      <hr></hr>
+        <hr></hr>
         <div className="d-flex justify-content-between">
           <h4 className="ml-3 title-sub">Prints</h4>
           <Link to={"prints"} style={{ textDecoration: "none" }}>

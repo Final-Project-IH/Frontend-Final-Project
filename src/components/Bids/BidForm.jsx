@@ -50,13 +50,13 @@ const BidForm = ({ lastOffer, id }) => {
         setSubmitting(false);
         return;
       }
-      const result = window.confirm(
-        `Are you sure that you want to push with ${values.offer}€`
-      );
+      // const result = window.confirm(
+      //   `Are you sure that you want to push with ${values.offer}€`
+      // );
       // setTimeout(() => {
       //   setSubmitting(false);
       // }, 1000);
-      if (result) {
+      // if (result) {
         createBid(id, values.offer)
           .then((response) => {
             console.log(response);
@@ -65,7 +65,7 @@ const BidForm = ({ lastOffer, id }) => {
             console.log(err);
             navigate("/login")
           });
-      }
+      // }
       setSubmitting(false);
     },
   });

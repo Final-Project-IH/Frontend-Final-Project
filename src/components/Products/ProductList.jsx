@@ -9,7 +9,7 @@ const ProductList = ({ auctions, statusFilter }) => {
         if (statusFilter && auction.status === 'Closed') return null
         return (
           <div className="d-flex justify-content-center">
-        <div key={auction._id} className="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-xs-12 ">
+        <div key={auction._id} className="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-xs-12 listcards">
           <ProductCard product={auction?.product} auction={auction} />
         </div>
         </div>

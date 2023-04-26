@@ -16,3 +16,13 @@
     text-align: justify;
 }
 
+@media (max-width: 500px) {
+    .product-desc-detail{
+        padding: 0 !important;
+        margin-top: 30px !important;
+    }
+
+    .column-product{
+        padding-left: 0 !important;
+    }
+}
